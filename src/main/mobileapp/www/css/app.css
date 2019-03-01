@@ -1,0 +1,107 @@
+.modal-title-mobile{
+  font-size: 1.98rem;
+}
+
+.sel-title{
+  background: #f3f3f3;
+  margin-top:15px !important;
+}
+
+.custom-modal{
+    z-index: 9999999999999;
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    background: #f3f3f3;
+    flex-direction: column;
+    display: none;
+    border: 1px solid red;
+}
+
+.ionic-bootrapp-merge-fix{
+    width: 100%;
+    z-index: 1000;
+    height: 870px !important;
+}
+
+.modal{
+    max-height: none !important;
+}
+
+.btn-cancel{
+    background: #900 !important;
+    margin-top: 10px;
+}
+
+.btn-full-width{
+    width: 100% !important;
+}
+
+.sel-title{
+    font-size:1.34em;
+    margin-top:20px;
+}
+
+.text-title-mobile{
+margin: 20px auto;
+font-size: 26px;
+padding-top: 40px;
+text-transform: capitalize;
+}
+
+/* Cores plantão */
+
+:root{
+  --cor-azul: #b8e2ff;
+  --cor-cinza: #dedada;
+  --cor-verde: #b3e2b0;
+  --cor-vermelha: #f17878;
+}
+
+.cor-do-plantao:hover{
+  background-color:none !important;
+}
+
+.cor-do-plantao:nth-child(2){
+  background: var(--cor-cinza);
+}
+.cor-do-plantao:nth-child(3){
+  background: var(--cor-verde);
+}
+ 
+.cor-do-plantao:nth-child(4){
+  background: var(--cor-azul);
+}
+.cor-do-plantao:nth-child(5){
+  background: var(--cor-vermelha);
+}
+.cor-do-plantao:nth-child(6){
+  background: var(--cor-azul);
+}
+.cor-do-plantao:nth-child(7){
+  background: var(--cor-cinza);
+}
+
+.row-seletor{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+ 
+.cal-month-day:hover{
+  background: none !important;
+}
+
+.cal-week-box-cell{
+  display: none !important;
+}
+
+.btn-seletor{
+    background: #069;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    color: white;
+}
