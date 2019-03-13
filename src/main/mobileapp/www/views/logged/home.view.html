@@ -21,7 +21,23 @@
       <h2 class="text-center text-title-mobile">{{ vm.calendarTitle }}</h2> 
       <!-- Custom IONIC Modal --> 
       <!-- Detalhes do Plantão --> 
-      <div class="modal fade ionic-bootrapp-merge-fix" id="plantaoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> 
+      
+      
+     <style>
+        .calendar-modal-overflow{
+            display: flex;
+            width:100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            position: absolute;
+        }
+     </style>
+     <!--<div class="calendar-modal-overflow"> -->
+     <!--   <div class="calendar-modal-window"></div>-->
+     <!--</div>-->
+     
+      <div ng-style="{display: isDetailEnabled ? 'block' : 'none'}" class="modal fade ionic-bootrapp-merge-fix" id="plantaoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> 
         <div class="modal-dialog" role="document"> 
           <div class="modal-content"> 
             <div class="modal-header"> 
@@ -47,29 +63,78 @@
                   </tr> 
                 </tbody> 
               </table> 
-              <h3 class="sel-title">Selecione um plantão para a troca:</h3> 
-              <table> 
-                <tbody> 
-                  <tr> 
-                    <td><strong>Médico</strong></td> 
-                    <td ng-click="vm.openModalMedicos()">{{ vm.selectedMedic.medico || 'Selecione o médico' }}</td> 
-                  </tr> 
-                  <tr> 
-                    <td> <strong>Local plantão</strong></td> 
-                    <td>{{ vm.selectedMedic.local }}</td> 
-                  </tr> 
-                  <tr> 
-                    <td><strong>Data</strong> </td> 
-                    <td>{{ vm.selectedMedic.startsAt }}</td> 
-                  </tr> 
-                  <tr> 
-                    <td><strong>Horário escala</strong></td> 
-                    <td>{{ vm.selectedMedic.horario }}</td> 
-                  </tr> 
-                </tbody> 
-              </table> 
-              <button ng-click="vm.closePlantaoModal()" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar troca de plantão</button> 
-              <button ng-click="vm.closePlantaoModal()" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
+              <p class="sel-title">Selecione um plantão para a troca:</p>
+              <style>
+                  .select-box{
+                    display: flex;
+                    width: 100%;
+                   
+                    position: relative;
+                  }
+                  
+                  .select-toggle{ 
+                     width: 100%;
+                     display: flex;
+                     height: 35px;
+                     justify-content: center;
+                     align-items: center;
+                     border-top: 1px solid #ccc;
+                     border-bottom: 1px solid #ccc;                      
+                      
+                  }
+                  .select-toggle-list{
+                      display: flex;
+                      flex-direction: column;
+                      width: 100%;
+                      background: #f3f3f3;
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      min-height: 100px;
+                  }
+                  
+                  .select-toggle-list-item{
+                     width: 100%;
+                     display: flex;
+                     height: 35px;
+                     justify-content: center;
+                     align-items: center;
+                     border-bottom: 1px solid #ccc;
+                  }
+                  
+              </style>
+
+              <div class="select-box">
+                <div ng-click="vm.selectDoctorToggle()" class="select-toggle">Selecione um médico</div>
+                <div class="select-toggle-list" ng-show="isDoctorListEnabled">
+                    <div ng-click="vm.selectDoctorToggle()" ng-repeat="i in [1, 2, 3, 4]" class="select-toggle-list-item">Nome do médico</div>
+                </div>
+              </div>
+              
+              <!--<table> -->
+              <!--  <tbody> -->
+              <!--    <tr> -->
+              <!--      <td><strong>Médico</strong></td> -->
+              <!--      <td>{{ vm.selectedMedic.medico || 'Selecione o médico' }}</td> -->
+              <!--    </tr> -->
+              <!--    <tr> -->
+              <!--      <td> <strong>Local plantão</strong></td> -->
+              <!--      <td>{{ vm.selectedMedic.local }}</td> -->
+              <!--    </tr> -->
+              <!--    <tr> -->
+              <!--      <td><strong>Data</strong> </td> -->
+              <!--      <td>{{ vm.selectedMedic.startsAt }}</td> -->
+              <!--    </tr> -->
+              <!--    <tr> -->
+              <!--      <td><strong>Horário escala</strong></td> -->
+              <!--      <td>{{ vm.selectedMedic.horario }}</td> -->
+              <!--    </tr> -->
+              <!--  </tbody> -->
+              <!--</table> -->
+              <div class="calendar-modal-btn-placer">
+                  <button ng-click="vm.closePlantaoModal()" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar troca de plantão</button> 
+                  <button ng-click="vm.closePlantaoModal()" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
+              </div>
             </div> 
           </div> 
         </div> 
@@ -112,7 +177,7 @@
         </div> 
       </div> 
       <br> 
-      <div class="flex-box-wrapper"> 
+      <div class="flex-box-wrapper" ng-if="!isDetailEnabled"> 
         <div class="coluna-calendar"></div> 
         <mwl-calendar class="comp-calendar" events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" cell-is-open="vm.cellIsOpen" day-view-start="06:00" day-view-end="22:59" day-view-split="30" cell-modifier="vm.modifyCell(calendarCell)" cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)"> 
         </mwl-calendar> 
@@ -154,5 +219,9 @@
         </tbody> 
       </table> 
     </div> 
+     
+
+     
+    
   </ion-content> 
 </ion-view>

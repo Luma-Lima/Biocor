@@ -68,11 +68,13 @@ app.controller('AfterLoginController', function($scope) {
         //  }).then(function(modal) {
         //    $scope.modal = modal;
         //  });
-   
     
+        $scope.isDoctorListEnabled = false;
+
          vm.eventClicked = function(event) {
+           console.log(event);
            vm.currentEvent = event;
-           
+
            let convertDate = {
              inicio: new Date(vm.currentEvent.startsAt),
              final: new Date(vm.currentEvent.endsAt),
@@ -84,13 +86,20 @@ app.controller('AfterLoginController', function($scope) {
            };
  
            $ionicScrollDelegate.scrollTop();
-           angular.element('#plantaoModal').css('display', 'block');
+           $scope.isDetailEnabled = true;
          };
          
          vm.closePlantaoModal = function(){
-            angular.element('#plantaoModal').fadeOut();
+            $scope.isDetailEnabled = false;
          }
          
+        vm.selectDoctorToggle = function() {
+          console.log('Selecioar médico');
+          $scope.isDoctorListEnabled = !$scope.isDoctorListEnabled;
+        }
+
+
+         // ###
          // FUNCOES PAR MODAL MEDICOS
          vm.selectedMedic = 'Selecione um médico'
          
@@ -103,15 +112,12 @@ app.controller('AfterLoginController', function($scope) {
          }
          
          vm.chooseMedic = function(item) {
-         
            vm.selectedMedic = item;
            
             var convertDate = {
               inicio: new Date(vm.selectedMedic.startsAt)
             };
              vm.selectedMedic.startsAt = moment(convertDate.inicio).format('DD/MM/YYYY');
-
-           
            //console.log(choosen[0].medico)
            vm.closeModalMedicos()
          }
