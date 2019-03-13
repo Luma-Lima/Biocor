@@ -46,42 +46,6 @@ public interface Solicitacao_MudancaDAO extends JpaRepository<Solicitacao_Mudanc
 
 
 
-  /**
-   * OneToMany Relation
-   * @generated
-   */
-  @Query("SELECT entity FROM Plantao entity WHERE entity.solicitacao_Mudanca.id = :id")
-  public Page<Plantao> findPlantao(@Param(value="id") java.lang.String id, Pageable pageable);
-    
-  /**
-   * ManyToOne Relation - Searchable fields - General search (Only strings fields)
-   * @generated
-   */
-  @Query("SELECT entity.agenda FROM Plantao entity WHERE entity.solicitacao_Mudanca.id = :id AND (:search = :search)")
-  public Page<Agenda> listAgendaGeneralSearch(@Param(value="search") java.lang.String search, @Param(value="id") java.lang.String id, Pageable pageable);
-
-  /**
-   * ManyToOne Relation - Searchable fields - Specific search
-   * @generated
-   */
-  @Query("SELECT entity.agenda FROM Plantao entity WHERE entity.solicitacao_Mudanca.id = :id AND (:dt_agenda_age is null OR entity.agenda.dt_agenda_age = :dt_agenda_age) AND (:cd_status_age is null OR entity.agenda.cd_status_age = :cd_status_age)")
-  public Page<Agenda> listAgendaSpecificSearch(@Param(value="id") java.lang.String id, @Param(value="dt_agenda_age") java.util.Date dt_agenda_age, @Param(value="cd_status_age") java.lang.Integer cd_status_age, Pageable pageable);
-
-  /**
-   * ManyToOne Relation
-   * @generated
-   */
-  @Query("SELECT entity.agenda FROM Plantao entity WHERE entity.solicitacao_Mudanca.id = :id")
-  public Page<Agenda> listAgenda(@Param(value="id") java.lang.String id, Pageable pageable);
-
-  /**
-   * ManyToOne Relation Delete
-   * @generated
-   */
-  @Modifying
-  @Query("DELETE FROM Plantao entity WHERE entity.solicitacao_Mudanca.id = :instanceId AND entity.agenda.id = :relationId")
-  public int deleteAgenda(@Param(value="instanceId") java.lang.String instanceId, @Param(value="relationId") java.lang.String relationId);
-
     
   /**
    * Searchable fields - General search (Only strings fields)
@@ -103,5 +67,26 @@ public interface Solicitacao_MudancaDAO extends JpaRepository<Solicitacao_Mudanc
    */
   @Query("SELECT entity FROM Solicitacao_Mudanca entity WHERE entity.horario_Escala.id = :id")
   public Page<Solicitacao_Mudanca> findSolicitacao_MudancasByHorario_Escala(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * Foreign Key agenda
+   * @generated
+   */
+  @Query("SELECT entity FROM Solicitacao_Mudanca entity WHERE entity.agenda.id = :id")
+  public Page<Solicitacao_Mudanca> findSolicitacao_MudancasByAgenda(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * Foreign Key medicoSolic
+   * @generated
+   */
+  @Query("SELECT entity FROM Solicitacao_Mudanca entity WHERE entity.medicoSolic.id = :id")
+  public Page<Solicitacao_Mudanca> findSolicitacao_MudancasByMedicoSolic(@Param(value="id") java.lang.String id, Pageable pageable);
+
+  /**
+   * Foreign Key medicoDest
+   * @generated
+   */
+  @Query("SELECT entity FROM Solicitacao_Mudanca entity WHERE entity.medicoDest.id = :id")
+  public Page<Solicitacao_Mudanca> findSolicitacao_MudancasByMedicoDest(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }

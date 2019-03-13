@@ -60,6 +60,30 @@ public class Solicitacao_Mudanca implements Serializable {
   private java.lang.Integer cd_status_mud;
 
   /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_agenda", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Agenda agenda;
+
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_medico_solic", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Medico medicoSolic;
+
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_medico_dest", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private Medico medicoDest;
+
+  /**
    * Construtor
    * @generated
    */
@@ -144,6 +168,66 @@ public class Solicitacao_Mudanca implements Serializable {
    */
   public Solicitacao_Mudanca setCd_status_mud(java.lang.Integer cd_status_mud){
     this.cd_status_mud = cd_status_mud;
+    return this;
+  }
+
+  /**
+   * Obtém agenda
+   * return agenda
+   * @generated
+   */
+  
+  public Agenda getAgenda(){
+    return this.agenda;
+  }
+
+  /**
+   * Define agenda
+   * @param agenda agenda
+   * @generated
+   */
+  public Solicitacao_Mudanca setAgenda(Agenda agenda){
+    this.agenda = agenda;
+    return this;
+  }
+
+  /**
+   * Obtém medicoSolic
+   * return medicoSolic
+   * @generated
+   */
+  
+  public Medico getMedicoSolic(){
+    return this.medicoSolic;
+  }
+
+  /**
+   * Define medicoSolic
+   * @param medicoSolic medicoSolic
+   * @generated
+   */
+  public Solicitacao_Mudanca setMedicoSolic(Medico medicoSolic){
+    this.medicoSolic = medicoSolic;
+    return this;
+  }
+
+  /**
+   * Obtém medicoDest
+   * return medicoDest
+   * @generated
+   */
+  
+  public Medico getMedicoDest(){
+    return this.medicoDest;
+  }
+
+  /**
+   * Define medicoDest
+   * @param medicoDest medicoDest
+   * @generated
+   */
+  public Solicitacao_Mudanca setMedicoDest(Medico medicoDest){
+    this.medicoDest = medicoDest;
     return this;
   }
 

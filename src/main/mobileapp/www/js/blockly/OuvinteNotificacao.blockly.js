@@ -7,7 +7,7 @@ window.blockly.js.blockly.OuvinteNotificacao = window.blockly.js.blockly.Ouvinte
  * OuvinteNotificacao
  */
 window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
- var item, dados, token;
+ var item, agendaId, dados, token;
   this.cronapi.cordova.device.getFirebaseToken(function(sender_token) {
       token = sender_token;
     dados = this.cronapi.object.createObjectFromString('{}');
@@ -25,8 +25,19 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
 /**
  * Descreva esta função...
  */
-window.blockly.js.blockly.OuvinteNotificacao.ouvir = function() {
+window.blockly.js.blockly.OuvinteNotificacao.solicitarMudancaAgenda = function(agendaId) {
  var item, dados, token;
+  agendaId = '';
+  this.cronapi.util.callServerBlocklyAsynchronous('blockly.Notificacao:solicitarMudancaAgenda', function(sender_item) {
+      item = sender_item;
+  }.bind(this), agendaId);
+}
+
+/**
+ * Descreva esta função...
+ */
+window.blockly.js.blockly.OuvinteNotificacao.ouvir = function() {
+ var item, agendaId, dados, token;
   this.cronapi.cordova.device.getFirebaseNotificationData(function(sender_dados) {
       dados = sender_dados;
     this.cronapi.screen.notify('success',dados);
