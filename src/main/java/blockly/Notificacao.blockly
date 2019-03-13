@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="Notificacao" ruleName="Notificacao" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="528.562570621854" scrolly="-453.0000000000002" target="_d]l[Q,;+Ao86hrljz|!"/>
+  <metadata scale="1" scrollx="341.9218416794188" scrolly="-634.4999999999995" target="_d]l[Q,;+Ao86hrljz|!"/>
   <block colour="#fca03b" id="_d]l[Q,;+Ao86hrljz|!" origintype="procedures_defnoreturn" output="false" tooltip="Cria uma função que não tem retorno." type="procedures_defnoreturn" x="-517" y="113">
     <mutation>
       <arg name="dados"/>
@@ -134,7 +134,7 @@
                                           <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="IGZM_!uDtA6_F?Qd@b0{" origintype="procedures_get_field_object" output="true" type="procedures_get_field_object">
                                             <mutation name="" return-raw-type="undefined"/>
                                             <field name="SELECT">id</field>
-                                            <field name="SELECT"/>
+                                            <field name="SELECT">id</field>
                                           </block>
                                         </value>
                                       </block>
@@ -161,13 +161,41 @@
                                 <value name="PARAM1">
                                   <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="yz.$fDxJuu8X,~fMsU+q" origintype="procedures_get_field_object" output="true" type="procedures_get_field_object">
                                     <mutation name="" return-raw-type="undefined"/>
-                                    <field name="SELECT"/>
-                                    <field name="SELECT"/>
+                                    <field name="SELECT">user</field>
+                                    <field name="SELECT">user</field>
                                   </block>
                                 </value>
                                 <value name="PARAM2">
-                                  <block colour="#0088ee" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="01uZ]1R%8![Po@`L}#Qs" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                    <field name="VAR">usuario&lt;app.entity.User&gt;</field>
+                                  <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="5Y7-L43dVv;veG~p$QqS" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
+                                    <mutation data="%7B%22entity%22:%22app.entity.User%22,%22entityFullName%22:%22app.entity.User%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
+                                      <arg name="id"/>
+                                      <arg name="NOTSELECTED"/>
+                                      <arg name="NOTSELECTED"/>
+                                      <arg name="NOTSELECTED"/>
+                                      <arg name="NOTSELECTED"/>
+                                      <arg name="NOTSELECTED"/>
+                                      <arg name="NOTSELECTED"/>
+                                    </mutation>
+                                    <value name="ARG0">
+                                      <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="~)NB9a|V;EIjVavRlU?f" multilayer="false" namespace="cronapi.object.Operations.getObjectField" origintype="procedures_get_field" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EObter%20campo%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20obter%20campo%20do%20Objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_get_field">
+                                        <mutation name="{{cronapi.object.Operations.getObjectField}}">
+                                          <arg name="Objeto"/>
+                                          <arg name="Caminho a percorrer"/>
+                                        </mutation>
+                                        <value name="PARAM0">
+                                          <block colour="#0088ee" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="jriq.*gmDUfTZY4.KzX1" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                            <field name="VAR">usuario&lt;app.entity.User&gt;</field>
+                                          </block>
+                                        </value>
+                                        <value name="PARAM1">
+                                          <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="UB4K7t:dz?ijh6e2Mv.y" origintype="procedures_get_field_object" output="true" type="procedures_get_field_object">
+                                            <mutation name="" return-raw-type="undefined"/>
+                                            <field name="SELECT">id</field>
+                                            <field name="SELECT">id</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
                                   </block>
                                 </value>
                                 <next>
@@ -185,8 +213,8 @@
                                     <value name="PARAM1">
                                       <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="}#P[B`_Qqu[)W%A]@Xbx" origintype="procedures_get_field_object" output="true" type="procedures_get_field_object">
                                         <mutation name="" return-raw-type="undefined"/>
-                                        <field name="SELECT"/>
-                                        <field name="SELECT"/>
+                                        <field name="SELECT">token</field>
+                                        <field name="SELECT">token</field>
                                       </block>
                                     </value>
                                     <value name="PARAM2">
@@ -215,7 +243,7 @@
                                 <field name="VAR">dispositivo&lt;app.entity.Device&gt;</field>
                                 <value name="VALUE">
                                   <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="M58KBzfckz/GbXj.85-1" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
-                                    <mutation data="%7B%22entity%22:%22app.entity.Device%22,%22entityFullName%22:%22app.entity.Device%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22token%5C%22,%5C%22platform%5C%22,%5C%22model%5C%22,%5C%22platformVersion%5C%22,%5C%22appName%5C%22,%5C%22appVersion%5C%22,%5C%22user%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
+                                    <mutation data="%7B%22entity%22:%22app.entity.Device%22,%22entityFullName%22:%22app.entity.Device%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22token%5C%22,%5C%22platform%5C%22,%5C%22model%5C%22,%5C%22platformVersion%5C%22,%5C%22appName%5C%22,%5C%22appVersion%5C%22,%5C%22user%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22,%5C%22undefined%5C%22%5D%22,%22type%22:%22F%22,%22fixedEntity%22:false%7D" name="{{cronapi.object.Operations.newObject}}">
                                       <arg name="id"/>
                                       <arg name="token"/>
                                       <arg name="platform"/>
@@ -326,8 +354,36 @@
                                       </block>
                                     </value>
                                     <value name="ARG7">
-                                      <block colour="#0088ee" dependencyby="_d]l[Q,;+Ao86hrljz|!" id=",;p1Ial5`^I1K|hiM|Db" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                        <field name="VAR">usuario&lt;app.entity.User&gt;</field>
+                                      <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="=s%O%IV3,%goG%.C;boP" multilayer="false" namespace="cronapi.object.Operations.newObject" origintype="procedures_createnewobject_callreturn" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3ECriar%20novo%20objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20cria%20um%20novo%20objeto%20%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Mapa%3C/span%3E%3Cdiv%3E%20Par%C3%A2metros%20a%20serem%20passados%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.newObject%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_createnewobject_callreturn">
+                                        <mutation data="%7B%22entity%22:%22app.entity.User%22,%22entityFullName%22:%22app.entity.User%22,%22params%22:%22%5B%5C%22id%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22%5D%22,%22paramTypes%22:%22%5B%5C%22undefined%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22,%5C%22NOTSELECTED%5C%22%5D%22,%22type%22:%22F%22%7D" name="{{cronapi.object.Operations.newObject}}">
+                                          <arg name="id"/>
+                                          <arg name="NOTSELECTED"/>
+                                          <arg name="NOTSELECTED"/>
+                                          <arg name="NOTSELECTED"/>
+                                          <arg name="NOTSELECTED"/>
+                                          <arg name="NOTSELECTED"/>
+                                          <arg name="NOTSELECTED"/>
+                                        </mutation>
+                                        <value name="ARG0">
+                                          <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="UG6Y?YWqUlbbq}k:th!(" multilayer="false" namespace="cronapi.object.Operations.getObjectField" origintype="procedures_get_field" output="true" returntype="ObjectType.OBJECT" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EObter%20campo%20do%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20para%20obter%20campo%20do%20Objeto%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%20:%20Objeto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Caminho%20a%20percorrer%20:%20Texto%3C/span%3E%3Cdiv%3E%20Exemplo:%20estado%5B3%5D.uf%3C/div%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22return%22%3E%3Cstrong%3ERetorno:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Objeto%3C/span%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.object.Operations.getObjectField%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_get_field">
+                                            <mutation name="{{cronapi.object.Operations.getObjectField}}">
+                                              <arg name="Objeto"/>
+                                              <arg name="Caminho a percorrer"/>
+                                            </mutation>
+                                            <value name="PARAM0">
+                                              <block colour="#0088ee" dependencyby="_d]l[Q,;+Ao86hrljz|!" id=",)tcs:pni[C/-jx9AF4@" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                                                <field name="VAR">dispositivo&lt;app.entity.Device&gt;</field>
+                                              </block>
+                                            </value>
+                                            <value name="PARAM1">
+                                              <block colour="#c88330" dependencyby="_d]l[Q,;+Ao86hrljz|!" id="L7.%??Z($O:u6!joFu=W" origintype="procedures_get_field_object" output="true" type="procedures_get_field_object">
+                                                <mutation name="" return-raw-type="undefined"/>
+                                                <field name="SELECT">id</field>
+                                                <field name="SELECT">id</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
                                       </block>
                                     </value>
                                   </block>
