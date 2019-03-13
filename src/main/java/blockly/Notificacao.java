@@ -13,10 +13,11 @@ public static final int TIMEOUT = 300;
 
 /**
  *
+ * @param solicitacao
  * @return Var
  */
 // Notificacao
-public static Var enviar() throws Exception {
+public static Var enviar(Var solicitacao) throws Exception {
  return new Callable<Var>() {
 
    private Var dados = Var.VAR_NULL;
@@ -25,7 +26,7 @@ public static Var enviar() throws Exception {
     dados = cronapi.json.Operations.createObjectJson();
     cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("solicitado"), Var.valueOf("304BF43E-0E62-4F4A-8A63-3F22D7AD4611"));
     cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("solicitante"), Var.valueOf("304BF43E-0E62-4F4A-8A63-3F22D7AD4611"));
-    cronapi.pushnotification.Operations.sendNotification(Var.valueOf("AAAAYXpS-3s:APA91bHKz9BApNs3EHNG-moJ7czTOFL5b55D-miNbShiLClZ3r925zz2kf6lGktkqdrNMuxng3UxYsNFqrAmS-6C7Uu9KfHnq8g1MivlT3pmYOKEaut07U4TJSjgL16ZoYzvqMeGxc6P"), Var.valueOf(""), Var.valueOf("Mudança de Plantão"), Var.valueOf("Mudança"), dados);
+    cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), Var.valueOf("dr_08uzwIX8:APA91bEnxCeTejQqS_k8g7IcSbLdpjdv8pFtuxwfGxtVudyVwT2SgKwWj7NMkpkylA1MNuRkxCcSr35nhP76M_3EyYuJF_sp83bqqBybo-c5wncUMP9WtVDOkgp_sC_4ZJ4FJ-rMrEBv"), Var.valueOf("Solicitação Mudança de Plantão"), Var.valueOf("Mudança"), dados);
     return Var.VAR_NULL;
    }
  }.call();
@@ -60,6 +61,26 @@ public static void gravarDispositivo(Var dados) throws Exception {
         }
     }
    return Var.VAR_NULL;
+   }
+ }.call();
+}
+
+/**
+ *
+ * @return Var
+ */
+// Descreva esta função...
+public static Var obterChaveServidor() throws Exception {
+ return new Callable<Var>() {
+
+   private Var uuid = Var.VAR_NULL;
+   private Var dados = Var.VAR_NULL;
+   private Var token = Var.VAR_NULL;
+   private Var dispositivo = Var.VAR_NULL;
+   private Var usuario = Var.VAR_NULL;
+
+   public Var call() throws Exception {
+    return Var.valueOf("AAAAYXpS-3s:APA91bHKz9BApNs3EHNG-moJ7czTOFL5b55D-miNbShiLClZ3r925zz2kf6lGktkqdrNMuxng3UxYsNFqrAmS-6C7Uu9KfHnq8g1MivlT3pmYOKEaut07U4TJSjgL16ZoYzvqMeGxc6P");
    }
  }.call();
 }
