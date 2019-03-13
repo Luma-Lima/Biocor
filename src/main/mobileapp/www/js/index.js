@@ -12,6 +12,7 @@ var device = {
     // get token firebase
     if (firebase && hostapp && device) {
       var appURL = hostapp + 'device';
+      
       firebase.getToken(function(code) {
         var data  = { id : device.uuid, 
                       appName : build.packageName,
@@ -27,6 +28,7 @@ var device = {
       function(err) {
         console.error(err);
       });
+      
     }
   }
 };

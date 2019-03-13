@@ -44,14 +44,13 @@ public interface DeviceDAO extends JpaRepository<Device, java.lang.String> {
   @Query("DELETE FROM Device entity WHERE entity.id = :id")
   public void delete(@Param(value="id") java.lang.String id);
 
+
+
   /**
-   * Lista com paginação de acordo com a NamedQuery
-   * 
+   * Foreign Key user
    * @generated
    */
-  @Query("select c from Device c")
-  public Page<Device> list(Pageable pageable);
-  
-
+  @Query("SELECT entity FROM Device entity WHERE entity.user.id = :id")
+  public Page<Device> findDevicesByUser(@Param(value="id") java.lang.String id, Pageable pageable);
 
 }

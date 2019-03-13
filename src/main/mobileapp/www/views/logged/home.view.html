@@ -1,4 +1,4 @@
-<ion-view cache-view="false" view-title="Home" hide-back-button="true" class="pane">
+<ion-view cache-view="false" view-title="Home" hide-back-button="true" class="pane" ng-init="cronapi.client('js.blockly.OuvinteNotificacao.iniciar').run()">
     <ion-nav-buttons side="right"> 
       <button class="button button-stable" ng-hide="Agenda.inserting || Agenda.editing" ng-click="Agenda.startInserting()"> <i class="icon ion-plus-round" style="color: black;"></i> </button>
       <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.post()"> <i class="icon ion-checkmark"></i> </button>

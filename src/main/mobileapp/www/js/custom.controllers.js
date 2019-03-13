@@ -38,16 +38,16 @@ app.controller('AfterLoginController', function($scope) {
          
       // MODEL Calendário GLOBAL, Todos os Plantões:
       vm.plantoes = [];
-      vm.plantoes = PlantaoAPIService.getData();
-      
+      PlantaoAPIService.getData().then(value => vm.plantoes = value).then(()=>{
       // MODEL Plantões do médicos exibidos no calendário:
-        var medicoId = PlantaoAPIService.getLogin(); // ID do médico que fez a sessão no app;
-        console.log("Id medico", medicoId);
+      PlantaoAPIService.getLogin().then((medicoId) =>{
         vm.events = vm.plantoes.filter( plantao => plantao.medicoId == medicoId );
-        console.log(vm.events);
-        
-        
         vm.medicos = vm.plantoes.filter( plantao => plantao.medicoId !== medicoId );
+      });
+        
+      });
+      
+      
 
          vm.cellIsOpen = true;
      
@@ -62,12 +62,12 @@ app.controller('AfterLoginController', function($scope) {
            });
          };
          
-         $ionicModal.fromTemplateUrl('views/logged/modal_plantao.html', {
-           scope: $scope,
-           animation: 'slide-in-up'
-         }).then(function(modal) {
-           $scope.modal = modal;
-         });
+        //  $ionicModal.fromTemplateUrl('views/logged/modal_plantao.html', {
+        //    scope: $scope,
+        //    animation: 'slide-in-up'
+        //  }).then(function(modal) {
+        //    $scope.modal = modal;
+        //  });
    
     
          vm.eventClicked = function(event) {

@@ -37,12 +37,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 64,
-        "y": 576
+        "x": 82,
+        "y": 706
       },
       "size": {
-        "width": 150.546875,
-        "height": 107.86979293823242
+        "width": 150.5625,
+        "height": 107.86198043823242
       },
       "angle": 0,
       "isRest": true,
@@ -135,7 +135,7 @@
           "text": "id\nuser\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 56.734375,
+          "ref-x": 56.15625,
           "font-size": 11,
           "text": "java.lang.String\nUser\n"
         },
@@ -163,12 +163,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 70,
-        "y": 320
+        "x": 74,
+        "y": 428
       },
       "size": {
-        "width": 175.875,
-        "height": 162.203125
+        "width": 177.09375,
+        "height": 162.1953125
       },
       "angle": 0,
       "isRest": true,
@@ -376,7 +376,7 @@
           "text": "email\nname\nid\nlogin\npicture\npassword\ntheme\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 82.0625,
+          "ref-x": 82.6875,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\n"
         },
@@ -444,32 +444,23 @@
         "model:java.lang.String",
         "platformVersion:java.lang.String",
         "appName:java.lang.String",
-        "appVersion:java.lang.String"
+        "appVersion:java.lang.String",
+        "user:User"
       ],
-      "methods": [
-        "+ list(): List<Device>"
-      ],
+      "methods": [],
       "position": {
         "x": 946.3828125,
-        "y": 40
+        "y": 40.0000114440918
       },
       "size": {
-        "width": 203.75,
-        "height": 174.4415512084961
+        "width": 206.40625,
+        "height": 173.1212387084961
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
       "multitenantContextIgnoreEntities": "",
       "role": "Auto",
-      "queries": [
-        {
-          "isRest": "true",
-          "name": "list",
-          "query": "select c from $entity c",
-          "void": false,
-          "type": "select"
-        }
-      ],
+      "queries": [],
       "tableName": null,
       "tableScheme": null,
       "isRest": "true",
@@ -485,13 +476,13 @@
           "dbLength": "",
           "dbPrecision": "",
           "dbScale": "",
-          "dbDefaultValue": "UUID.randomUUID().toString().toUpperCase()",
+          "dbDefaultValue": "",
           "label": "Id",
           "mask": "",
           "isPrimaryKey": true,
           "isUniqueKey": false,
           "isNullable": false,
-          "pkType": "UUID",
+          "pkType": "None",
           "multitenantContext": "",
           "jsonIgnore": false,
           "isTransient": false,
@@ -638,6 +629,29 @@
           "isEncryption": false,
           "referencedColumnName": "",
           "isSearchable": false
+        },
+        {
+          "name": "user",
+          "type": "User",
+          "dbName": "fk_user",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false
         }
       ],
       "runtimeClass": "cronos.widgets.joint.uml.Class",
@@ -652,12 +666,12 @@
           "transform": "translate(0,0)"
         },
         ".uml-class-attrs-rect": {
-          "height": 170,
+          "height": 190,
           "transform": "translate(0,50)"
         },
         ".uml-class-methods-rect": {
-          "height": 50,
-          "transform": "translate(0,220)"
+          "height": 30,
+          "transform": "translate(0,240)"
         },
         ".uml-class-name-text": {
           "fill": "#000",
@@ -667,17 +681,17 @@
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\ntoken\nplatform\nmodel\nplatformVersion\nappName\nappVersion\n"
+          "text": "id\ntoken\nplatform\nmodel\nplatformVersion\nappName\nappVersion\nuser\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 110.421875,
+          "ref-x": 112,
           "font-size": 11,
-          "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\n"
+          "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nUser\n"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
           "font-size": 11,
-          "text": "+ list(): List<Device>"
+          "text": ""
         }
       }
     },
@@ -695,12 +709,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 64.78125,
-        "y": 40
+        "x": 60,
+        "y": -14
       },
       "size": {
-        "width": 240.4375,
-        "height": 162.203125
+        "width": 240.359375,
+        "height": 162.1953125
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -909,7 +923,7 @@
           "text": "id\nnr_cpf_med\nnr_crm_med\nqt_hrsupervisao_med\nqt_hrfinanceiro_med\ncd_status_med\nuser\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 139.78125,
+          "ref-x": 140.21875,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\nUser\n"
         },
@@ -1116,12 +1130,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 617.6875,
-        "y": 78.16792297363281
+        "x": 654,
+        "y": -24
       },
       "size": {
-        "width": 212.296875,
-        "height": 118.67371368408203
+        "width": 212.265625,
+        "height": 118.66590118408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1238,7 +1252,7 @@
           "text": "id\nnm_horario_hre\nqt_horas_hre\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 111.640625,
+          "ref-x": 112.125,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.Integer\n"
         },
@@ -1271,12 +1285,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 358,
-        "y": 590
+        "x": 340,
+        "y": 604
       },
       "size": {
-        "width": 236.0625,
-        "height": 249.81288146972656
+        "width": 237.09375,
+        "height": 249.80506896972656
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -1673,7 +1687,7 @@
           "text": "id\nhorario_Escala\nmedico\ndt_agenda_age\ncd_status_age\nqt_mudancas_age\ncd_corsemana_age\ncolor\nstartsAt\nendsAt\ndraggable\nresizable\nactions\nresponsible\nlocal_Plantao\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 130.609375,
+          "ref-x": 131.0625,
           "font-size": 11,
           "text": "java.lang.String\nHorario_Escala\nMedico\njava.util.Date\njava.lang.Integer\njava.lang.Integer\njava.lang.Integer\njava.lang.String\njava.util.Date\njava.util.Date\njava.lang.Boolean\njava.lang.Boolean\njava.lang.String\njava.lang.Boolean\nLocal_Plantao\n"
         },
@@ -1755,6 +1769,8 @@
       "id": "76821ae8-89b5-4983-9780-c1f6bc2810f8",
       "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
       "target": {
+        "x": 394,
+        "y": 600,
         "id": "953dd6a5-bede-4dad-8bee-fff852cf0e0e"
       },
       "source": {
@@ -1787,6 +1803,10 @@
         {
           "x": 342,
           "y": 446
+        },
+        {
+          "x": 394,
+          "y": 600
         }
       ],
       "attrs": {
@@ -1819,12 +1839,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 674,
-        "y": 534
+        "x": 758,
+        "y": 550
       },
       "size": {
-        "width": 259.28125,
-        "height": 173.1290512084961
+        "width": 260.28125,
+        "height": 173.1212387084961
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2056,7 +2076,7 @@
           "text": "id\ndia\nmes\nano\nagenda\nsolicitacao_Mudanca\nsemana\ncor_semana\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 136.71875,
+          "ref-x": 137.171875,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\njava.lang.String\nAgenda\nSolicitacao_Mudanca\njava.lang.String\njava.lang.Integer\n"
         },
@@ -2121,12 +2141,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 684,
-        "y": 308
+        "x": 746,
+        "y": 328
       },
       "size": {
-        "width": 217.203125,
-        "height": 129.51891326904297
+        "width": 217.15625,
+        "height": 129.51110076904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2270,7 +2290,7 @@
           "text": "id\nhorario_Escala\ndt_solicitao_mud\ncd_status_mud\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 116.546875,
+          "ref-x": 117.015625,
           "font-size": 11,
           "text": "java.lang.String\nHorario_Escala\njava.util.Date\njava.lang.Integer\n"
         },
@@ -2397,12 +2417,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 352,
-        "y": 80
+        "x": 348,
+        "y": -2
       },
       "size": {
-        "width": 218.703125,
-        "height": 118.67371368408203
+        "width": 217.765625,
+        "height": 118.66590118408203
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2519,7 +2539,7 @@
           "text": "id\ncd_codigo_hsp\nnm_hospital_hsp\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 118.046875,
+          "ref-x": 117.625,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.Integer\njava.lang.String\n"
         },
@@ -2541,12 +2561,12 @@
       ],
       "methods": [],
       "position": {
-        "x": 368,
-        "y": 284
+        "x": 342,
+        "y": 184
       },
       "size": {
-        "width": 195.640625,
-        "height": 129.51891326904297
+        "width": 195.609375,
+        "height": 129.51110076904297
       },
       "angle": 0,
       "multitenantContextJsonIgnore": "false",
@@ -2686,7 +2706,7 @@
           "text": "id\ncd_codigo_lpl\nnm_local_lpl\nhospitais\n"
         },
         ".uml-class-attrs-value": {
-          "ref-x": 101.828125,
+          "ref-x": 101.203125,
           "font-size": 11,
           "text": "java.lang.String\njava.lang.String\njava.lang.String\nHospitais\n"
         },
@@ -2772,6 +2792,49 @@
         }
       ],
       "z": 34,
+      "attrs": {
+        ".marker-target": {
+          "d": "",
+          "fill": ""
+        },
+        ".marker-source": {
+          "d": "M 40 10 L 20 20 L 0 10 L 20 0 z",
+          "fill": "#cecece"
+        }
+      }
+    },
+    {
+      "type": "uml.Composition",
+      "relationFields": [
+        "user:target"
+      ],
+      "associationType": "Association",
+      "name": null,
+      "id": "49ad2f93-c6bd-4339-80ea-864a65111faa",
+      "runtimeClass": "cronos.widgets.joint.arrow.OneToMany",
+      "target": {
+        "id": "d92238a3-a37d-4cc6-a543-d0687dc207cd"
+      },
+      "source": {
+        "id": "d2e50f97-0b9e-4037-94ba-af64568af247"
+      },
+      "labels": [
+        {
+          "position": 0.9,
+          "attrs": {
+            "rect": {
+              "fill": "transparent"
+            },
+            "text": {
+              "text": "*",
+              "font-family": "Arial",
+              "font-size": "12px",
+              "fill": "#cecece"
+            }
+          }
+        }
+      ],
+      "z": 35,
       "attrs": {
         ".marker-target": {
           "d": "",

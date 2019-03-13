@@ -16,7 +16,6 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
   let userLogado;
  
   var getCalendarData = new Promise((resolve, reject) =>{
-
     $http({
               method: 'GET',
               url:  Configurations.getApiServer() + '/api/cronapi/rest/blockly.BuscarDados:ExecutarBuscarDados/',
@@ -42,16 +41,12 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                   actions: responseData[i].actions,
               }) 
               }
-              resolve(calendarData);
+              resolve(calendarData);            
           }, function errorCallback(response) {
-              console.log(response);
+              reject(response);
           });
-   
-
 })
-
 var getUserLogin = new Promise((resolve, reject) =>{
-
     $http({
               method: 'GET',
               url:  Configurations.getApiServer() + '/api/cronapi/rest/blockly.MedLogado:UserLogado/',
@@ -59,24 +54,17 @@ var getUserLogin = new Promise((resolve, reject) =>{
                  'Content-Type': 'application/json'
                }
     }).then(function successCallback(response) {
-        // userLogado = response.data;
-        resolve(response.data);
+      resolve(response.data);
     });
 
 })
   
       return {
         getData: function(){
-          getCalendarData.then((value)=>{
-            calendarData = value;
-          });
-          return calendarData;
+          return getCalendarData;
         },
         getLogin: function(){
-          getUserLogin.then((value)=>{
-            userLogado = value;
-          });
-          return userLogado;
+          return getUserLogin;
         }
       }
     

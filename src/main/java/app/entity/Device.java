@@ -31,7 +31,7 @@ public class Device implements Serializable {
    */
   @Id
   @Column(name = "id", nullable = false, insertable=true, updatable=true)
-  private java.lang.String id = UUID.randomUUID().toString().toUpperCase();
+  private java.lang.String id;
 
   /**
   * @generated
@@ -74,6 +74,14 @@ public class Device implements Serializable {
   @Column(name = "appVersion", nullable = true, unique = false, insertable=true, updatable=true)
   
   private java.lang.String appVersion;
+
+  /**
+  * @generated
+  */
+  @ManyToOne
+  @JoinColumn(name="fk_user", nullable = true, referencedColumnName = "id", insertable=true, updatable=true)
+  
+  private User user;
 
   /**
    * Construtor
@@ -220,6 +228,26 @@ public class Device implements Serializable {
    */
   public Device setAppVersion(java.lang.String appVersion){
     this.appVersion = appVersion;
+    return this;
+  }
+
+  /**
+   * Obtém user
+   * return user
+   * @generated
+   */
+  
+  public User getUser(){
+    return this.user;
+  }
+
+  /**
+   * Define user
+   * @param user user
+   * @generated
+   */
+  public Device setUser(User user){
+    this.user = user;
     return this;
   }
 
