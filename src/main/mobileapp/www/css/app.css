@@ -105,3 +105,22 @@ text-transform: capitalize;
     border-radius: 3px;
     color: white;
 }
+
+mwl-calendar .cal-slide-content{
+  padding: 10px !important;
+}
+
+.cal-event-list ul li a{
+    color: #fff;
+    font-weight: 400;
+    height: 40px;
+    display: flex;
+    background: #387ef5;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 13px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+ 
