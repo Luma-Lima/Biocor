@@ -3,8 +3,8 @@
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <non-jta-data-source>java:comp/env/jdbc/BdMed</non-jta-data-source>
-        <class>app.entity.Device</class>
         <class>app.entity.Solicitacao_Mudanca</class>
+        <class>app.entity.Device</class>
         <class>app.entity.Horario_Escala</class>
         <class>app.entity.Hospitais</class>
         <class>app.entity.Plantao</class>
