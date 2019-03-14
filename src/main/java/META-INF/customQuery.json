@@ -669,5 +669,55 @@
     "calcFieldsProperties": {},
     "errorHandles": {},
     "serviceUrl": "api/cronapi/odata/v2/query677990/"
+  },
+  "query376376": {
+    "customId": "consultaMedico",
+    "queryName": "Consulta Médico Plantão",
+    "sourceType": "entityFullName",
+    "entitySimpleName": "Medico",
+    "entityFullName": "app.entity.Medico",
+    "query": {
+      "isValid": true,
+      "rulesEntity": [
+        {
+          "entity": "Medico",
+          "alias": "m",
+          "namespace": "app.entity.Medico"
+        }
+      ],
+      "rulesSelect": [
+        {
+          "func": "get",
+          "field": "m"
+        }
+      ],
+      "rulesGroupBy": [],
+      "rulesHaving": [],
+      "rulesOrderBy": [],
+      "rules": {
+        "condition": "AND",
+        "not": false,
+        "valid": true,
+        "rules": []
+      }
+    },
+    "queryParamsValues": [],
+    "verbs": {
+      "GET": true,
+      "POST": true,
+      "PUT": true,
+      "DELETE": true,
+      "FILTER": true,
+      "COUNT": true
+    },
+    "events": {},
+    "defaultValues": {},
+    "defaultValuesProperties": {},
+    "security": {},
+    "calcFields": {},
+    "calcFieldsSecurity": {},
+    "calcFieldsProperties": {},
+    "errorHandles": {},
+    "serviceUrl": "api/cronapi/odata/v2/query376376/"
   }
 }

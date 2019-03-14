@@ -31,7 +31,7 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                   medicoId: responseData[i].medicoId,
                   medico: responseData[i].medico,
                   responsavel: responseData[i].responsavel,
-                  horario: '07:00 - 19:00',
+                  horario: responseData[i].horarioEscala,
                   local: responseData[i].local,
                   color: calendarConfig.colorTypes.warning,
                   startsAt: new Date(responseData[i].startsAt + day),
@@ -40,7 +40,8 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                   resizable: responseData[i].resizable,
                   actions: responseData[i].actions,
                   agendaId: responseData[i].agendaId,
-                  agendaMedicoId: responseData[i].agendaMedicoId
+                  agendaMedicoId: responseData[i].agendaMedicoId,
+                  horarioEscalaId: responseData[i].horarioEscalaId 
               }) 
               }
               resolve(calendarData);            

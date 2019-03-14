@@ -4,14 +4,22 @@
     <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.post()"> <i class="icon ion-checkmark"></i> </button> 
   </ion-nav-buttons> 
   <ion-nav-buttons side="left"> 
-    <button class="button button-icon button-clear ion-navicon" style="color: black;" ng-hide=" agenda.inserting="" ||="" agenda.editing"="" menu-toggle="left"> </button> 
+    <button class="button button-icon button-clear ion-navicon" style="color: black;" ng-hide=" agenda.inserting=" "="" ||="" agenda.editing"="" menu-toggle="left"> </button> 
     <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.cancel()"> <i class="icon ion-android-arrow-back corico" style="background-color: black;"></i> </button> 
   </ion-nav-buttons> 
   <ion-content class="scroll-content" data-component="crn-ion-content"> 
     <button class="button button-block button-positive component-holder" type="submit" xattr-fullsize="button-block" xattr-theme="button-positive" ng-click="cronapi.server('blockly.Notificacao.enviar').run()" data-component="crn-button" id="crn-button-617766"><i class="ion ion-home"></i> <span>Button </span></button> 
+    <datasource name="ConsultaMedico" entity="app.query376376" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;horario_Escala&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;medico&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;dt_agenda_age&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_status_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_mudancas_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_corsemana_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;color&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;startsAt&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;endsAt&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;draggable&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;resizable&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;actions&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;responsible&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;local_Plantao&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;horario_Escala_nm_horario_hre&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;medico_nr_cpf_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;local_Plantao_cd_codigo_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" condition="" lazy="false"></datasource>
+    <datasource name="Medico" entity="app.Medico" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nr_cpf_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;nr_crm_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_hrsupervisao_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_hrfinanceiro_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_status_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;user&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;user_email&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" condition=""></datasource> 
     <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-datasource" id="crn-datasource-906854"> 
       <datasource name="Agenda" entity="api/cronapi/crud/app.entity.Agenda" keys="id" rows-per-page="10" delete-message="Deseja remover?" class=""></datasource> 
     </div> 
+  <label class="item item-input item-select component-holder" data-component="crn-dynamic-select" id="crn-dynamic-select-379641">
+    <span class="input-label">Nome do médico</span>
+    <select ng-model="vars.medico" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.user_email for opt in Medico.data track by opt.id" >
+    </select>
+  </label>
+
     <div ng-show="Agenda.editing || Agenda.inserting"> 
       <form crn-datasource="Agenda"> 
       </form> 
@@ -21,9 +29,7 @@
       <h2 class="text-center text-title-mobile">{{ vm.calendarTitle }}</h2> 
       <!-- Custom IONIC Modal --> 
       <!-- Detalhes do Plantão --> 
-      
-      
-     <style>
+      <style>
         .calendar-modal-overflow{
             display: flex;
             width:100%;
@@ -32,11 +38,10 @@
             z-index: 2000;
             position: absolute;
         }
-     </style>
-     <!--<div class="calendar-modal-overflow"> -->
-     <!--   <div class="calendar-modal-window"></div>-->
-     <!--</div>-->
-     
+     </style> 
+      <!--<div class="calendar-modal-overflow"> --> 
+      <!--   <div class="calendar-modal-window"></div>--> 
+      <!--</div>--> 
       <div ng-style="{display: isDetailEnabled ? 'block' : 'none'}" class="modal fade ionic-bootrapp-merge-fix" id="plantaoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> 
         <div class="modal-dialog" role="document"> 
           <div class="modal-content"> 
@@ -44,33 +49,26 @@
               <h4 class="modal-title modal-title-mobile">Detalhes do Plantão</h4> 
             </div> 
             <div class="modal-body"> 
-              <!--<p>Event: <pre>{{ vm.currentEvent | json }}</pre></p>--> 
-              <!--<p>Médico: <pre>{{ vm.medico }}</pre></p>--> 
-              <!--<p>{{vm.currentEvent.convertDates.final}}</p>--> 
               <table class="table table-striped margin-bottom-none"> 
                 <tbody> 
-                  
                   <tr> 
                     <td> <strong>Local plantão</strong> </td> 
                     <td>{{vm.currentEvent.local}}</td> 
-                  </tr>
-
+                  </tr> 
                   <tr> 
                     <td> <strong>Médico</strong> </td> 
-                    <td>Médico (Usuário atual)</td> 
-                  </tr>
-                  
+                    <td>{{vm.currentEvent.medico}}</td> 
+                  </tr> 
                   <tr> 
                     <td><strong>Data</strong> </td> 
                     <td>{{vm.currentEvent.convertDates.inicio}}</td> 
                   </tr> 
                   <tr> 
                     <td><strong>Horário escala</strong></td> 
-                    <td>07:00 - 13:00</td> 
+                    <td>{{vm.currentEvent.horario}}</td> 
                   </tr> 
                 </tbody> 
               </table> 
-              <p class="sel-title">Selecione um plantão para a troca:</p>
               <style>
                   .select-box{
                     display: flex;
@@ -109,39 +107,27 @@
                      border-bottom: 1px solid #ccc;
                   }
                   
-              </style>
-
-              <div class="select-box">
-                <div ng-click="vm.selectDoctorToggle()" class="select-toggle">Selecione um médico</div>
-                <div class="select-toggle-list" ng-show="isDoctorListEnabled">
-                    <div ng-click="vm.selectDoctorToggle()" ng-repeat="i in [1, 2, 3, 4]" class="select-toggle-list-item">Nome do médico</div>
-                </div>
-              </div>
-              
-              <!--<table> -->
-              <!--  <tbody> -->
-              <!--    <tr> -->
-              <!--      <td><strong>Médico</strong></td> -->
-              <!--      <td>{{ vm.selectedMedic.medico || 'Selecione o médico' }}</td> -->
-              <!--    </tr> -->
-              <!--    <tr> -->
-              <!--      <td> <strong>Local plantão</strong></td> -->
-              <!--      <td>{{ vm.selectedMedic.local }}</td> -->
-              <!--    </tr> -->
-              <!--    <tr> -->
-              <!--      <td><strong>Data</strong> </td> -->
-              <!--      <td>{{ vm.selectedMedic.startsAt }}</td> -->
-              <!--    </tr> -->
-              <!--    <tr> -->
-              <!--      <td><strong>Horário escala</strong></td> -->
-              <!--      <td>{{ vm.selectedMedic.horario }}</td> -->
-              <!--    </tr> -->
-              <!--  </tbody> -->
-              <!--</table> -->
-              <div class="calendar-modal-btn-placer">
-                  <button ng-click="vm.closePlantaoModal()" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar troca de plantão</button> 
-                  <button ng-click="vm.closePlantaoModal()" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
-              </div>
+              </style> 
+              <p class="sel-title" ng-if="vm.currentEvent.agendaMedicoId != vm.currentEvent.medicoId">Selecione um médico para a troca de plantão:</p> 
+              <label class="item item-input item-select component-holder" data-component="crn-dynamic-select" id="crn-dynamic-select-379641">
+                <span class="input-label">Nome do médico</span>
+                <select ng-model="vars.medico" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.user_email for opt in Medico.data track by opt.id" >
+                </select>
+              </label>
+              <!--<div class="select-box" ng-if="vm.currentEvent.agendaMedicoId != vm.currentEvent.medicoId"> -->
+              <!--  <div ng-click="vm.selectDoctorToggle()" class="select-toggle">-->
+              <!--     Selecione um médico -->
+              <!--  </div> -->
+              <!--  <div class="select-toggle-list" ng-show="isDoctorListEnabled"> -->
+              <!--    <div ng-click="vm.selectDoctorToggle()" ng-repeat="i in [1, 2, 3, 4]" class="select-toggle-list-item">-->
+              <!--       Nome do médico -->
+              <!--    </div> -->
+              <!--  </div> -->
+              <!--</div> -->
+              <div class="calendar-modal-btn-placer"> 
+                <button ng-click="vm.closePlantaoModal()" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar troca de plantão</button> 
+                <button ng-click="vm.closePlantaoModal()" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
+              </div> 
             </div> 
           </div> 
         </div> 
@@ -226,9 +212,5 @@
         </tbody> 
       </table> 
     </div> 
-     
-
-     
-    
   </ion-content> 
 </ion-view>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="Notificacao" ruleName="Notificacao" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="575.0188125610352" scrolly="-746.0000000000002" target="XFB9/XGhCDK%_74F)c(+"/>
-  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-622" y="158">
+  <metadata scale="1" scrollx="618.5" scrolly="-161.5000000000001" target="Anb:u5+^,0vLkL9QIqn5"/>
+  <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-607" y="158">
     <mutation>
       <arg name="agendaId"/>
       <arg name="usuarioDestinoId"/>
