@@ -140,3 +140,16 @@ mwl-calendar .cal-slide-content{
   margin-top: 50px;
 }
  
+.item-icon-left{
+  position: relative;
+}
+
+.notification-bullet{
+  width: 8px; 
+  height: 8px; 
+  border-radius: 50%; 
+  background: #900;
+  position: absolute;
+  right: 20px;
+  top: 24px;
+  }
