@@ -2,6 +2,7 @@ package blockly;
 
 import cronapi.*;
 import cronapi.rest.security.CronappSecurity;
+import java.util.Iterator;
 import java.util.concurrent.Callable;
 
 
@@ -14,34 +15,51 @@ public static final int TIMEOUT = 300;
 /**
  *
  * @param agendaId
+ * @param usuarioDestinoId
  * @return Var
  */
 // Notificacao
-public static Var solicitarMudancaAgenda(Var agendaId) throws Exception {
+public static Var solicitarMudancaAgenda(Var agendaId, Var usuarioDestinoId) throws Exception {
  return new Callable<Var>() {
 
    private Var agenda = Var.VAR_NULL;
-   private Var medicoAgenda = Var.VAR_NULL;
-   private Var usuario = Var.VAR_NULL;
+   private Var medicoDestino = Var.VAR_NULL;
+   private Var loginAgenda = Var.VAR_NULL;
+   private Var medicoSolicitante = Var.VAR_NULL;
    private Var solicitacaoMudanca = Var.VAR_NULL;
+   private Var agendaMedicoDest = Var.VAR_NULL;
 
    public Var call() throws Exception {
-    if (cronapi.logic.Operations.isNullOrEmpty(agendaId).negate().getObjectAsBoolean()) {
+    if (Var.valueOf(cronapi.logic.Operations.isNullOrEmpty(agendaId).negate().getObjectAsBoolean() && cronapi.logic.Operations.isNullOrEmpty(usuarioDestinoId).negate().getObjectAsBoolean()).getObjectAsBoolean()) {
         agenda = cronapi.database.Operations.query(Var.valueOf("app.entity.Agenda"),Var.valueOf("select a from Agenda a where a.id = :id"),Var.valueOf("id",agendaId));
-        if (Var.valueOf(Var.valueOf(!agenda.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(agenda, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
-            medicoAgenda = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico.agenda.user.login"));
-            if (Var.valueOf(medicoAgenda.equals(cronapi.util.Operations.getCurrentUserName())).getObjectAsBoolean()) {
-                cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Não é permitido realizar solicitação de mudança para o mesmo usuário!"));
+        medicoDestino = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.Medico"),Var.valueOf("select m from Medico m where m.user.id = :userId"),Var.valueOf("userId",usuarioDestinoId))));
+        if (Var.valueOf(Var.valueOf(Var.valueOf(!agenda.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(agenda, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean() && (Var.valueOf(Var.valueOf(!medicoDestino.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(medicoDestino, Var.valueOf("user")).equals(Var.VAR_NULL)).getObjectAsBoolean())).getObjectAsBoolean()).getObjectAsBoolean()) {
+            loginAgenda = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico.user.name"));
+            medicoSolicitante = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico"));
+            if (Var.valueOf(!loginAgenda.equals(cronapi.util.Operations.getCurrentUserName())).getObjectAsBoolean()) {
+                cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Operação não permitida! O plantão não pertence ao usuário corrente."));
+            } else if (Var.valueOf(cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("id")).equals(cronapi.object.Operations.getObjectField(medicoDestino, Var.valueOf("id")))).getObjectAsBoolean()) {
+                cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Não é permitido realizar solicitação de mudança de plantão! Médico Solicitante igual ao médico Solicitado."));
             } else {
-                usuario = cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u from User u where u.login = :login"),Var.valueOf("login",cronapi.util.Operations.getCurrentUserName()));
-                solicitacaoMudanca = cronapi.database.Operations.query(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("select s from Solicitacao_Mudanca s where s.agenda.id = :agendaId AND s.cd_status_mud = 0"),Var.valueOf("agendaId",agendaId));
+                solicitacaoMudanca = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("select s from Solicitacao_Mudanca s where s.agenda.id = :agendaId AND s.cd_status_mud = 0"),Var.valueOf("agendaId",agendaId))));
                 if (Var.valueOf(Var.valueOf(!solicitacaoMudanca.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
-                    cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! Já existe uma solicitação pendente."));
-                } else {
-                    blockly.Notificacao.enviarNotificacao(agendaAtual);
+                    cronapi.util.Operations.throwException(cronapi.util.Operations.createException(Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! Já existe uma solicitação pendente.")));
                 }
+                solicitacaoMudanca = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("select s from Solicitacao_Mudanca s where s.medicoDest.id = :medicoDestId OR s.medicoSolic.id = :medicoSolicId"),Var.valueOf("medicoDestId",usuarioDestinoId),Var.valueOf("medicoSolicId",usuarioDestinoId))));
+                if (Var.valueOf(Var.valueOf(!solicitacaoMudanca.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
+                    cronapi.util.Operations.throwException(cronapi.util.Operations.createException(Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! Existe uma solicitação para o médico selecionado.")));
+                }
+                agendaMedicoDest = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.Agenda"),Var.valueOf("select a from Agenda a where a.dt_agenda_age = :dt_agenda_age AND a.horario_Escala.id = :horario_EscalaId AND a.medico.id = :medicoId"),Var.valueOf("dt_agenda_age",cronapi.object.Operations.getObjectField(agenda, Var.valueOf("dt_agenda_age"))),Var.valueOf("horario_EscalaId",cronapi.object.Operations.getObjectField(agenda, Var.valueOf("horario_Escala.id"))),Var.valueOf("medicoId",usuarioDestinoId))));
+                if (Var.valueOf(Var.valueOf(!agendaMedicoDest.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(agendaMedicoDest, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
+                    cronapi.util.Operations.throwException(cronapi.util.Operations.createException(Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! O médico selecionado indisponível.")));
+                }
+                blockly.Notificacao.enviarNotificacao(agenda, medicoSolicitante, medicoDestino);
             }
+        } else {
+            cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! Agenda ou médico não disponível."));
         }
+    } else {
+        cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Não foi possível realizar a solicitação de mudança de plantão! Agenda não disponível."));
     }
     return Var.VAR_NULL;
    }
@@ -58,17 +76,24 @@ public static Var solicitarMudancaAgenda(Var agendaId) throws Exception {
 public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var medicoDestino) throws Exception {
   new Callable<Var>() {
 
-   private Var agenda = Var.VAR_NULL;
    private Var solicitacaoMudanca = Var.VAR_NULL;
    private Var dados = Var.VAR_NULL;
+   private Var idSolicitacaoMudanca = Var.VAR_NULL;
+   private Var destinatarios = Var.VAR_NULL;
+   private Var item = Var.VAR_NULL;
 
    public Var call() throws Exception {
-    agenda = agendaAtual;
+    idSolicitacaoMudanca = cronapi.util.Operations.generateUUID();
+    solicitacaoMudanca = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("id",idSolicitacaoMudanca),Var.valueOf("horario_Escala",cronapi.object.Operations.getObjectField(agendaAtual, Var.valueOf("horario_Escala"))),Var.valueOf("dt_solicitao_mud",cronapi.dateTime.Operations.getNowNoHour()),Var.valueOf("cd_status_mud",Var.valueOf(0)),Var.valueOf("agenda",cronapi.object.Operations.newObject(Var.valueOf("app.entity.Agenda"),Var.valueOf("id",cronapi.object.Operations.getObjectField(agendaAtual, Var.valueOf("id"))))),Var.valueOf("medicoSolic",medicoSolicitante),Var.valueOf("medicoDest",medicoDestino));
+    cronapi.database.Operations.insert(Var.valueOf("app.entity.Solicitacao_Mudanca"),solicitacaoMudanca);
     dados = cronapi.json.Operations.createObjectJson();
-    solicitacaoMudanca = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("id",cronapi.util.Operations.generateUUID()),Var.valueOf("horario_Escala",cronapi.object.Operations.getObjectField(agenda, Var.valueOf("horario_Escala"))),Var.valueOf("dt_solicitao_mud",cronapi.dateTime.Operations.getNowNoHour()),Var.valueOf("cd_status_mud",Var.valueOf(0)),Var.valueOf("agenda",agenda),Var.valueOf("medicoSolic",medicoSolicitante),Var.valueOf("medicoDest",medicoDestino));
-    cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("solicitado"), Var.valueOf("304BF43E-0E62-4F4A-8A63-3F22D7AD4611"));
-    cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("solicitante"), Var.valueOf("304BF43E-0E62-4F4A-8A63-3F22D7AD4611"));
-    cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), Var.valueOf("dr_08uzwIX8:APA91bEnxCeTejQqS_k8g7IcSbLdpjdv8pFtuxwfGxtVudyVwT2SgKwWj7NMkpkylA1MNuRkxCcSr35nhP76M_3EyYuJF_sp83bqqBybo-c5wncUMP9WtVDOkgp_sC_4ZJ4FJ-rMrEBv"), Var.valueOf("Solicitação Mudança de Plantão"), Var.valueOf("Mudança"), dados);
+    cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("idSolicitacaoMudanca"), idSolicitacaoMudanca);
+    destinatarios = cronapi.database.Operations.query(Var.valueOf("app.entity.Device"),Var.valueOf("select d from Device d where d.user.id = :userId"),Var.valueOf("userId",cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("user.id"))));
+    for (Iterator it_item = destinatarios.iterator(); it_item.hasNext();) {
+        item = Var.valueOf(it_item.next());
+        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), Var.valueOf("Solicitação Mudança de Plantão"), Var.valueOf(Var.valueOf("Solicitante: ").toString() + cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("user.name")).toString()), dados);
+    } // end for
+    cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("Solicitação de Mudança Enviada."));
    return Var.VAR_NULL;
    }
  }.call();
@@ -82,10 +107,10 @@ public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var
 public static void gravarDispositivo(Var dados) throws Exception {
   new Callable<Var>() {
 
-   private Var usuario = Var.VAR_NULL;
    private Var uuid = Var.VAR_NULL;
    private Var token = Var.VAR_NULL;
    private Var dispositivo = Var.VAR_NULL;
+   private Var usuario = Var.VAR_NULL;
 
    public Var call() throws Exception {
     uuid = cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("uuid"));
@@ -103,6 +128,8 @@ public static void gravarDispositivo(Var dados) throws Exception {
                 cronapi.database.Operations.insert(Var.valueOf("app.entity.Device"),dispositivo);
             }
         }
+     } catch (Exception ex1_exception) {
+
      } finally {
      }
    return Var.VAR_NULL;
@@ -119,15 +146,18 @@ public static Var obterChaveServidor() throws Exception {
  return new Callable<Var>() {
 
    private Var agendaId = Var.VAR_NULL;
+   private Var usuarioDestinoId = Var.VAR_NULL;
    private Var agenda = Var.VAR_NULL;
-   private Var medicoAgenda = Var.VAR_NULL;
-   private Var usuario = Var.VAR_NULL;
+   private Var medicoDestino = Var.VAR_NULL;
+   private Var loginAgenda = Var.VAR_NULL;
+   private Var medicoSolicitante = Var.VAR_NULL;
    private Var solicitacaoMudanca = Var.VAR_NULL;
-   private Var agendaAtual = Var.VAR_NULL;
+   private Var agendaMedicoDest = Var.VAR_NULL;
    private Var uuid = Var.VAR_NULL;
    private Var dados = Var.VAR_NULL;
    private Var token = Var.VAR_NULL;
    private Var dispositivo = Var.VAR_NULL;
+   private Var usuario = Var.VAR_NULL;
 
    public Var call() throws Exception {
     return Var.valueOf("AAAAYXpS-3s:APA91bHKz9BApNs3EHNG-moJ7czTOFL5b55D-miNbShiLClZ3r925zz2kf6lGktkqdrNMuxng3UxYsNFqrAmS-6C7Uu9KfHnq8g1MivlT3pmYOKEaut07U4TJSjgL16ZoYzvqMeGxc6P");

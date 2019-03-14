@@ -39,7 +39,8 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                   draggable: responseData[i].draggable,
                   resizable: responseData[i].resizable,
                   actions: responseData[i].actions,
-                  agendaId: responseData[i].agendaId
+                  agendaId: responseData[i].agendaId,
+                  agendaMedicoId: responseData[i].agendaMedicoId
               }) 
               }
               resolve(calendarData);            
