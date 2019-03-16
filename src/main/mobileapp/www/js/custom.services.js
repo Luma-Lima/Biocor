@@ -16,7 +16,6 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
  
     // var getCalendarData = new Promise((resolve, reject) =>{
     function getCalendarData(success, error) {
-      debugger;
       let responseData;
       let calendarData = [];
 

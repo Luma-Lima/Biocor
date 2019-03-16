@@ -30,7 +30,7 @@ public static Var ExecutarBuscarDados() throws Exception {
    public Var call() throws Exception {
     consul = cronapi.database.Operations.query(Var.valueOf("app.entity.Agenda"),Var.valueOf("select a.medico.user.name, a.horario_Escala.nm_horario_hre, a.local_Plantao.hospitais.nm_hospital_hsp, a.local_Plantao.nm_local_lpl, a.responsible, a.color, a.startsAt, a.endsAt, a.draggable, a.resizable, a.actions, a.id, a.medico.user.id, a.horario_Escala.nm_horario_hre, a.horario_Escala.id from Agenda a"));
     listaDadosCalendario = cronapi.list.Operations.newList();
-    userID = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u.id from User u where u.name = :name"),Var.valueOf("name",cronapi.util.Operations.getCurrentUserName()))));
+    userID = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u.id from User u where u.login = :login"),Var.valueOf("login",cronapi.util.Operations.getCurrentUserName()))));
     for (Iterator it_i = consul.iterator(); it_i.hasNext();) {
         i = Var.valueOf(it_i.next());
         titulo = Var.valueOf(cronapi.list.Operations.get((cronapi.json.Operations.toJson(i)), Var.valueOf(1)).toString() + cronapi.list.Operations.get((cronapi.json.Operations.toJson(i)), Var.valueOf(2)).toString() + cronapi.list.Operations.get((cronapi.json.Operations.toJson(i)), Var.valueOf(3)).toString() + cronapi.list.Operations.get((cronapi.json.Operations.toJson(i)), Var.valueOf(4)).toString());

@@ -34,7 +34,7 @@ public static Var solicitarMudancaAgenda(Var agendaId, Var usuarioDestinoId) thr
         agenda = cronapi.database.Operations.query(Var.valueOf("app.entity.Agenda"),Var.valueOf("select a from Agenda a where a.id = :id"),Var.valueOf("id",agendaId));
         medicoDestino = cronapi.list.Operations.getFirst((cronapi.database.Operations.query(Var.valueOf("app.entity.Medico"),Var.valueOf("select m from Medico m where m.user.id = :userId"),Var.valueOf("userId",usuarioDestinoId))));
         if (Var.valueOf(Var.valueOf(Var.valueOf(!agenda.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(agenda, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean() && (Var.valueOf(Var.valueOf(!medicoDestino.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(medicoDestino, Var.valueOf("user")).equals(Var.VAR_NULL)).getObjectAsBoolean())).getObjectAsBoolean()).getObjectAsBoolean()) {
-            loginAgenda = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico.user.name"));
+            loginAgenda = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico.user.login"));
             medicoSolicitante = cronapi.object.Operations.getObjectField(agenda, Var.valueOf("medico"));
             if (Var.valueOf(!loginAgenda.equals(cronapi.util.Operations.getCurrentUserName())).getObjectAsBoolean()) {
                 cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("error"), Var.valueOf("Operação não permitida! O plantão não pertence ao usuário corrente."));
@@ -125,9 +125,11 @@ public static void gravarDispositivo(Var dados) throws Exception {
             dispositivo = cronapi.database.Operations.query(Var.valueOf("app.entity.Device"),Var.valueOf("select d from Device d where d.id = :id"),Var.valueOf("id",uuid));
             usuario = cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u from User u where u.login = :login"),Var.valueOf("login",cronapi.util.Operations.getCurrentUserName()));
             if (Var.valueOf(Var.valueOf(!dispositivo.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(dispositivo, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
-                cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("user"), cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")))));
-                cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("token"), token);
-                cronapi.database.Operations.update(Var.valueOf("app.entity.Device"),dispositivo);
+                if (Var.valueOf(Var.valueOf(!usuario.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
+                    cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("user"), cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")))));
+                    cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("token"), token);
+                    cronapi.database.Operations.update(Var.valueOf("app.entity.Device"),dispositivo);
+                }
             } else {
                 dispositivo = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Device"),Var.valueOf("id",uuid),Var.valueOf("token",token),Var.valueOf("platform",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("platform"))),Var.valueOf("model",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("model"))),Var.valueOf("platformVersion",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("platformVersion"))),Var.valueOf("appName",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("appName"))),Var.valueOf("appVersion",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("appVersion"))),Var.valueOf("user",cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(dispositivo, Var.valueOf("id"))))));
                 cronapi.database.Operations.insert(Var.valueOf("app.entity.Device"),dispositivo);
