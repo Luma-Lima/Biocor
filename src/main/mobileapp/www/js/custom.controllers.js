@@ -11,57 +11,58 @@ app.controller('AfterLoginController', function($scope) {
    });
    
    app.controller('CalendarCtrl', ['$scope', 'moment', 'calendarConfig', '$ionicScrollDelegate', 'PlantaoAPIService', '$ionicModal', function($scope, moment, calendarConfig, $ionicScrollDelegate, PlantaoAPIService, $ionicModal) {
-         calendarConfig.dateFormatter = 'moment';
-         var vm = this;
-     
-         //These variables MUST be set as a minimum for the calendar to work
-         vm.calendarView = 'month';
-         vm.viewDate = new Date();
-         console.log(vm.calendarView);
-         var actions = [{
-           label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
-           onClick: function(args) {
-             alert.show('Edited', args.calendarEvent);
-           }
-         }, {
-           label: '<i class=\'glyphicon glyphicon-remove\'></i>',
-           onClick: function(args) {
-             alert.show('Deleted', args.calendarEvent);
-           }
-         }];
-         
-         vm.showAlert = function() {
-           console.log("Alert!")
-         }
-         
-         
+      calendarConfig.dateFormatter = 'moment';
+      var vm = this;
+  
+      //These variables MUST be set as a minimum for the calendar to work
+      vm.calendarView = 'month';
+      vm.viewDate = new Date();
+      console.log(vm.calendarView);
+      var actions = [{
+        label: '<i class=\'glyphicon glyphicon-pencil\'></i>',
+        onClick: function(args) {
+          alert.show('Edited', args.calendarEvent);
+        }
+      }, {
+        label: '<i class=\'glyphicon glyphicon-remove\'></i>',
+        onClick: function(args) {
+          alert.show('Deleted', args.calendarEvent);
+        }
+      }];
+      
+      vm.showAlert = function() {
+        console.log("Alert!")
+      }
          
       // MODEL Calendário GLOBAL, Todos os Plantões:
-      vm.plantoes = [];
-      PlantaoAPIService.getData().then(value => vm.plantoes = value).then(()=>{
-      // MODEL Plantões do médicos exibidos no calendário:
-      PlantaoAPIService.getLogin().then((medicoId) =>{
-        vm.events = vm.plantoes.filter( plantao => plantao.medicoId == medicoId );
-        vm.medicos = vm.plantoes.filter( plantao => plantao.medicoId !== medicoId );
-      });
-        
-      });
-      
-      
+      PlantaoAPIService.getData(function(data){
+        vm.events = data;
+      },
+      function(response) {}
+      );
 
-         vm.cellIsOpen = true;
-     
-         vm.addEvent = function() {
-           vm.events.push({
-             title: 'New event',
-             startsAt: moment().startOf('day').toDate(),
-             endsAt: moment().endOf('day').toDate(),
-             color: calendarConfig.colorTypes.important,
-             draggable: true,
-             resizable: true
-           });
-         };
-         
+      // PlantaoAPIService.getData().then(value => vm.plantoes = value).then(()=>{
+      // // MODEL Plantões do médicos exibidos no calendário:
+      // PlantaoAPIService.getLogin().then((medicoId) =>{
+      //   vm.events = vm.plantoes.filter( plantao => plantao.medicoId == medicoId );
+      //   vm.medicos = vm.plantoes.filter( plantao => plantao.medicoId !== medicoId );
+      // });
+        
+      // });
+ 
+      vm.cellIsOpen = true;
+  
+      vm.addEvent = function() {
+        vm.events.push({
+          title: 'New event',
+          startsAt: moment().startOf('day').toDate(),
+          endsAt: moment().endOf('day').toDate(),
+          color: calendarConfig.colorTypes.important,
+          draggable: true,
+          resizable: true
+        });
+      };
+          
         //  $ionicModal.fromTemplateUrl('views/logged/modal_plantao.html', {
         //    scope: $scope,
         //    animation: 'slide-in-up'
@@ -93,10 +94,10 @@ app.controller('AfterLoginController', function($scope) {
             $scope.isDetailEnabled = false;
          }
          
-        vm.selectDoctorToggle = function() {
-          console.log('Selecioar médico');
-          $scope.isDoctorListEnabled = !$scope.isDoctorListEnabled;
-        }
+          vm.selectDoctorToggle = function() {
+            console.log('Selecioar médico');
+            $scope.isDoctorListEnabled = !$scope.isDoctorListEnabled;
+          }
 
 
          // ###

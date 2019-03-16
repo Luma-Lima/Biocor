@@ -8,7 +8,7 @@ app.factory('Configurations', [
     } 
     
     function obterUrlBase (){
-      let url = window.location.href;
+      let url = window.hostApp;
       let arr = url.split("/");
       return arr[0] + "//" + arr[2];
     }

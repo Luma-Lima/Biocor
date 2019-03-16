@@ -677,29 +677,11 @@
     "entitySimpleName": "Medico",
     "entityFullName": "app.entity.Medico",
     "query": {
-      "isValid": true,
-      "rulesEntity": [
-        {
-          "entity": "Medico",
-          "alias": "m",
-          "namespace": "app.entity.Medico"
-        }
-      ],
-      "rulesSelect": [
-        {
-          "func": "get",
-          "field": "m"
-        }
-      ],
-      "rulesGroupBy": [],
-      "rulesHaving": [],
-      "rulesOrderBy": [],
-      "rules": {
-        "condition": "AND",
-        "not": false,
-        "valid": true,
-        "rules": []
-      }
+      "isEmpty": true,
+      "isRawSql": true,
+      "sqlContent": "select m.id, m.user.name, m.user.id from Medico m \nwhere m.user \u003c\u003e null \norder by m.user.name\n            ",
+      "multiTenant": true,
+      "paginatorAutomatic": false
     },
     "queryParamsValues": [],
     "verbs": {

@@ -1,29 +1,15 @@
-<ion-view cache-view="false" view-title="Home" hide-back-button="true" class="pane" ng-init="cronapi.client('js.blockly.OuvinteNotificacao.iniciar').run()"> 
-  <ion-nav-buttons side="right"> 
-    <button class="button button-stable" ng-hide="Agenda.inserting || Agenda.editing" ng-click="Agenda.startInserting()"> <i class="icon ion-plus-round" style="color: black;"></i> </button> 
-    <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.post()"> <i class="icon ion-checkmark"></i> </button> 
-  </ion-nav-buttons> 
-  <ion-nav-buttons side="left"> 
-    <button class="button button-icon button-clear ion-navicon" style="color: black;" ng-hide=" agenda.inserting=" "="" ||="" agenda.editing"="" menu-toggle="left"> </button> 
-    <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.cancel()"> <i class="icon ion-android-arrow-back corico" style="background-color: black;"></i> </button> 
-  </ion-nav-buttons> 
+<ion-view cache-view="false" view-title="Home" hide-back-button="true" class="pane"> 
+  <!--<ion-nav-buttons side="right"> -->
+  <!--  <button class="button button-stable" ng-hide="Agenda.inserting || Agenda.editing" ng-click="Agenda.startInserting()"> <i class="icon ion-plus-round" style="color: black;"></i> </button> -->
+  <!--  <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.post()"> <i class="icon ion-checkmark"></i> </button> -->
+  <!--</ion-nav-buttons> -->
+  <!--<ion-nav-buttons side="left"> -->
+  <!--  <button class="button button-icon button-clear ion-navicon" style="color: black;" ng-hide=" agenda.inserting=" "="" ||="" agenda.editing"="" menu-toggle="left"> </button> -->
+  <!--  <button class="button button-stable" ng-show="Agenda.inserting || Agenda.editing" ng-click="Agenda.cancel()"> <i class="icon ion-android-arrow-back corico" style="background-color: black;"></i> </button> -->
+  <!--</ion-nav-buttons> -->
   <ion-content class="scroll-content" data-component="crn-ion-content"> 
-    <button class="button button-block button-positive component-holder" type="submit" xattr-fullsize="button-block" xattr-theme="button-positive" ng-click="cronapi.server('blockly.Notificacao.enviar').run()" data-component="crn-button" id="crn-button-617766"><i class="ion ion-home"></i> <span>Button </span></button> 
     <datasource name="ConsultaMedico" entity="app.query376376" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;horario_Escala&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;medico&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;dt_agenda_age&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_status_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_mudancas_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_corsemana_age&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;color&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;startsAt&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;endsAt&quot;,&quot;type&quot;:&quot;DateTime&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;draggable&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;resizable&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;actions&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;responsible&quot;,&quot;type&quot;:&quot;Boolean&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;local_Plantao&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;horario_Escala_nm_horario_hre&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;medico_nr_cpf_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;local_Plantao_cd_codigo_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" condition="" lazy="false"></datasource>
-    <datasource name="Medico" entity="app.Medico" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" data-component="crn-datasource" class="component-holder" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;nr_cpf_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;nr_crm_med&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_hrsupervisao_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;qt_hrfinanceiro_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;cd_status_med&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:false,&quot;key&quot;:false},{&quot;name&quot;:&quot;user&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;user_email&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" condition=""></datasource> 
-    <div class="component-holder ng-binding ng-scope ui-draggable ui-draggable-handle" data-component="crn-datasource" id="crn-datasource-906854"> 
-      <datasource name="Agenda" entity="api/cronapi/crud/app.entity.Agenda" keys="id" rows-per-page="10" delete-message="Deseja remover?" class=""></datasource> 
-    </div> 
-  <label class="item item-input item-select component-holder" data-component="crn-dynamic-select" id="crn-dynamic-select-379641">
-    <span class="input-label">Nome do médico</span>
-    <select ng-model="vars.medico" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.user_email for opt in Medico.data track by opt.id" >
-    </select>
-  </label>
 
-    <div ng-show="Agenda.editing || Agenda.inserting"> 
-      <form crn-datasource="Agenda"> 
-      </form> 
-    </div> 
     <!-- CALENDAR BOOTSTRAP BASED --> 
     <div ng-controller="CalendarCtrl as vm"> 
       <h2 class="text-center text-title-mobile">{{ vm.calendarTitle }}</h2> 
@@ -108,25 +94,19 @@
                   }
                   
               </style> 
-              <p class="sel-title" ng-if="vm.currentEvent.agendaMedicoId != vm.currentEvent.medicoId">Selecione um médico para a troca de plantão:</p> 
-              <label class="item item-input item-select component-holder" data-component="crn-dynamic-select" id="crn-dynamic-select-379641">
-                <span class="input-label">Nome do médico</span>
-                <select ng-model="vars.medico" class="form-control" id="textinput-user" name="textinput-user" ng-options="opt as opt.user_email for opt in Medico.data track by opt.id" >
+              
+              <p class="sel-title" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId">Selecione um médico para a troca de plantão:</p> 
+              <!--<label for="textinput-medico" class="item item-input item-select" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId">-->
+              <!--  <span class="input-label">Médico</span>-->
+                <select ng-model="vars.medico" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId" class="item item-input item-select" id="textinput-medico" name="textinput-medico" ng-options="opt as opt.user_name for opt in ConsultaMedico.data track by opt.id">
+                    <option value="">Selecione</option>
                 </select>
-              </label>
-              <!--<div class="select-box" ng-if="vm.currentEvent.agendaMedicoId != vm.currentEvent.medicoId"> -->
-              <!--  <div ng-click="vm.selectDoctorToggle()" class="select-toggle">-->
-              <!--     Selecione um médico -->
-              <!--  </div> -->
-              <!--  <div class="select-toggle-list" ng-show="isDoctorListEnabled"> -->
-              <!--    <div ng-click="vm.selectDoctorToggle()" ng-repeat="i in [1, 2, 3, 4]" class="select-toggle-list-item">-->
-              <!--       Nome do médico -->
-              <!--    </div> -->
-              <!--  </div> -->
-              <!--</div> -->
+                
+              <!--</label>-->
+              
               <div class="calendar-modal-btn-placer"> 
-                <button ng-click="vm.closePlantaoModal()" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar troca de plantão</button> 
-                <button ng-click="vm.closePlantaoModal()" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
+                <button ng-click="cronapi.client('js.blockly.OuvinteNotificacao.solicitarMudancaAgenda').run(vm.currentEvent.agendaId, vars.medico.user_id); vars.medico = null; vm.closePlantaoModal()" ng-if="vm.currentEvent.agendaMedicoId == vm.currentEvent.medicoId" class="btn btn-block btn-full-width" data-dismiss="modal">Solicitar mudança de plantão</button> 
+                <button ng-click="vars.medico = null; vm.closePlantaoModal();" class="btn btn-cancel btn-full-width" data-dismiss="modal">Cancelar</button> 
               </div> 
             </div> 
           </div> 

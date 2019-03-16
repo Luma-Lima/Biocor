@@ -13,7 +13,9 @@ var device = {
     if (firebase && hostapp && device) {
       var appURL = hostapp + 'device';
       
+      debugger;
       firebase.getToken(function(code) {
+        debugger;
         var data  = { id : device.uuid, 
                       appName : build.packageName,
                       appVersion : build.version,
