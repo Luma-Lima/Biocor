@@ -14,15 +14,13 @@
       <ion-list can-swipe="listCanSwipe"> 
         <ion-item ng-repeat="rowData in datasource.data" class="item" ng-click="datasource.startEditing(rowData)"> 
           <div class="row col-xs-12"> 
-            <div class="col">
-                <h2 xattr-position="text-left" class="component-holder text-left col-xs-1" data-component="crn-label" id="crn-label-696341" style="width: 148px; height: 28px;"><strong>{{Solicitacao_Mudanca.active.agenda.local_Plantao.hospitais.nm_hospital_hsp}}</strong></h2>
-                <h2 xattr-position="text-right" class="component-holder text-right col-xs-1" data-component="crn-label" id="crn-label-688778" style="width: 192px; height: 28px;">{{Solicitacao_Mudanca.active.medicoSolic.user.name}}</h2> 
-            </div> 
-          </div>
+            <h2 xattr-position="text-left" class="component-holder text-left col-xs-1" data-component="crn-label" id="crn-label-696341" style="width: 148px; height: 28px;"><strong>{{rowData.agenda.local_Plantao.hospitais.nm_hospital_hsp}}</strong></h2> 
+            <h2 xattr-position="text-right" class="component-holder text-right col-xs-1" data-component="crn-label" id="crn-label-688778" style="width: 140px; height: 28px;">{{rowData.medicoSolic.user.name}}</h2> 
+          </div> 
           <div class="row col-xs-12"> 
-              <h2 xattr-position="text-left" class="component-holder text-left col-xs-1" data-component="crn-label" id="crn-label-696341" style="width: 148px; height: 28px;">{{Solicitacao_Mudanca.active.agenda.dt_agenda_age | mask : 'DD/MM/YYYY'}}</h2>
-              <h2 xattr-position="text-right" class="component-holder text-right col-xs-1" data-component="crn-label" id="crn-label-688778" style="width: 192px; height: 28px;">{{Solicitacao_Mudanca.active.horario_Escala.nm_horario_hre}}</h2> 
-          </div>
+            <h2 xattr-position="text-left" class="component-holder text-left col-xs-1" data-component="crn-label" id="crn-label-696341" style="width: 148px; height: 28px;">{{rowData.agenda.dt_agenda_age | mask : 'DD/MM/YYYY'}}</h2> 
+            <h2 xattr-position="text-right" class="component-holder text-right col-xs-1" data-component="crn-label" id="crn-label-688778" style="width: 140px; height: 28px;">{{rowData.horario_Escala.nm_horario_hre}}</h2> 
+          </div> 
           <ion-option-button class="button-positive col-xs-12" ng-click="datasource.startEditing(rowData)"> 
             <i class="icon ion-edit"></i> 
           </ion-option-button> 
@@ -41,14 +39,29 @@
             <label for="textinput-date" class="item item-input item-stacked-label"> <span class="input-label">Data</span> <input type="date" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.agenda.dt_agenda_age" id="textinput-date" name="textinput-date" mask="DD/MM/YYYY"> </label> 
             <label for="textinput-horario" class="item item-input item-stacked-label"> <span class="input-label">Horário</span> <input type="text" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.agenda.horario_Escala.nm_horario_hre" id="textinput-horario" name="textinput-horario"> </label> 
             <label for="textinput-solicitante" class="item item-input item-stacked-label"> <span class="input-label">Solicitante</span> <input type="text" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.medicoSolic.user.name" id="textinput-solicitante" name="textinput-solicitante"> </label> 
-            <div class="component-holder ng-binding ng-scope" data-component="crn-toggle" id="crn-toggle-678144">
-              <label class="item item-toggle"><span>Aceita mudança de plantão?</span>
-                <div class="toggle toggle-assertive">
-                  <input type="checkbox" ng-model="vars.aceito">
-                  <div class="track">
-                    <div class="handle"></div>
-                  </div>
-                </div></label>
+            
+            <div class="list radio-group component-holder" ng-model="vars.aceito" data-component="crn-radio" id="crn-radio-118867">
+              <div class="item item-divider ng-binding">
+                Você aceita mudança de plantão?
+              </div>
+              <div data-component="crn-radioOption">
+                <label class="item item-radio" crn-value="" value="S"><input type="radio" name="group">
+                  <div class="radio-content">
+                    <div class="item-content">
+                      Aceito
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                  </div></label>
+              </div>
+              <div data-component="crn-radioOption">
+                <label class="item item-radio" crn-value="" value="N"><input type="radio" name="group">
+                  <div class="radio-content">
+                    <div class="item-content">
+                      Não Aceito
+                    </div>
+                    <i class="radio-icon ion-checkmark"></i>
+                  </div></label>
+              </div>
             </div> 
           </div> 
         </fieldset> 

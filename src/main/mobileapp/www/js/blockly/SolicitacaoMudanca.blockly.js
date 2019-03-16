@@ -7,7 +7,7 @@ window.blockly.js.blockly.SolicitacaoMudanca = window.blockly.js.blockly.Solicit
  * SolicitacaoMudanca
  */
 window.blockly.js.blockly.SolicitacaoMudanca.Executar = function() {
- var item, aceito, idSolicitacaoMudanca, valor;
+ var item, valor, idSolicitacaoMudanca, aceito;
   this.cronapi.util.scheduleExecution(function() {
      this.cronapi.util.callServerBlocklyAsynchronous('blockly.SolicitacaoMudanca:existePedido', function(sender_valor) {
         valor = sender_valor;
@@ -20,13 +20,20 @@ window.blockly.js.blockly.SolicitacaoMudanca.Executar = function() {
  * Descreva esta função...
  */
 window.blockly.js.blockly.SolicitacaoMudanca.confirmar = function(idSolicitacaoMudanca) {
- var item, aceito, valor;
+ var item, valor, aceito;
   aceito = this.cronapi.screen.getValueOfField('vars.aceito');
-  if (aceito == true) {
+  if (aceito == 'S') {
     this.cronapi.util.callServerBlocklyAsynchronous('blockly.SolicitacaoMudanca:confirmar', function(sender_item) {
         item = sender_item;
       this.cronapi.util.executeJavascriptNoReturn('Solicitacao_Mudanca.cancel();');
       this.cronapi.util.executeJavascriptNoReturn('Solicitacao_Mudanca.search();');
     }.bind(this), idSolicitacaoMudanca);
+  } else if (aceito == 'N') {
+    this.cronapi.util.callServerBlocklyAsynchronous('blockly.SolicitacaoMudanca:recusar', function(sender_item) {
+        item = sender_item;
+      this.cronapi.util.executeJavascriptNoReturn('Solicitacao_Mudanca.cancel();');
+      this.cronapi.util.executeJavascriptNoReturn('Solicitacao_Mudanca.search();');
+    }.bind(this), idSolicitacaoMudanca);
   }
+  this.cronapi.screen.changeValueOfField('vars.aceito', '');
 }

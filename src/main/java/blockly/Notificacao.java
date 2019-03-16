@@ -93,10 +93,9 @@ public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var
     dados = cronapi.json.Operations.createObjectJson();
     cronapi.json.Operations.setJsonOrMapField(dados, Var.valueOf("idSolicitacaoMudanca"), idSolicitacaoMudanca);
     destinatarios = cronapi.database.Operations.query(Var.valueOf("app.entity.Device"),Var.valueOf("select d from Device d where d.user.id = :userId"),Var.valueOf("userId",cronapi.object.Operations.getObjectField(medicoDestino, Var.valueOf("user.id"))));
-    System.out.println(destinatarios.getObjectAsString());
     for (Iterator it_item = destinatarios.iterator(); it_item.hasNext();) {
         item = Var.valueOf(it_item.next());
-        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), Var.valueOf("Solicitação Mudança de Plantão"), Var.valueOf(Var.valueOf("Solicitante: ").toString() + cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("user.name")).toString()), dados);
+        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), Var.valueOf("Solicitacao Mudanca de Plantao"), Var.valueOf(Var.valueOf("Solicitante: ").toString() + cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("user.name")).toString()), dados);
     } // end for
     cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("Solicitação de Mudança Enviada."));
    return Var.VAR_NULL;
