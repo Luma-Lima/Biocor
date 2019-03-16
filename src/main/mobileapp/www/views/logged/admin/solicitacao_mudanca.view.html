@@ -40,21 +40,27 @@
       <form crn-datasource="Solicitacao_Mudanca">
         <fieldset ng-disabled="!Solicitacao_Mudanca.editing &amp;&amp; !Solicitacao_Mudanca.inserting">
           <div class="list">
-            <!-- horario_Escala begin -->
             <datasource name="Horario_Escala" entity="api/cronapi/crud/app.entity.Horario_Escala" keys="id" class=""></datasource>
-            <label for="textinput-horario_Escala" class="item item-input item-select">
-              <span class="input-label">horario_Escala</span>
-              <select ng-model="Solicitacao_Mudanca.active.horario_Escala" class="form-control" id="textinput-horario_Escala" name="textinput-horario_Escala" ng-options="opt as opt.nm_horario_hre for opt in Horario_Escala.data track by opt.id" required="required" style="">
-              <option value="">None</option>
-              </select>
-            </label>
-            <!-- dt_solicitao_mud begin -->
+            <label for="textinput-hospital" class="item item-input item-stacked-label">
+              <span class="input-label">Local</span>
+              <input type="text" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.agenda.local_Plantao.hospitais.nm_hospital_hsp" id="textinput-hospital" name="textinput-hospital">
+            </label>            
+            <label for="textinput-date" class="item item-input item-stacked-label">
+              <span class="input-label">Data</span>
+              <input type="date" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.agenda.dt_agenda_age" id="textinput-date" name="textinput-date" mask="DD/MM/YYYY">
+            </label>            
+            <label for="textinput-horario" class="item item-input item-stacked-label">
+              <span class="input-label">Horário</span>
+              <input type="text" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.agenda.horario_Escala.nm_horario_hre" id="textinput-horario" name="textinput-horario">
+            </label>            
             <label for="textinput-dt_solicitao_mud" class="item item-input item-stacked-label">
-              <span class="input-label">Dt _solicitao _mud</span>
+              <span class="input-label">Solicitante</span>
+              <input type="text" ng-disabled="true" ng-model="Solicitacao_Mudanca.active.medicoSolic.user.name" id="textinput-dt_solicitao_mud" name="textinput-dt_solicitao_mud" mask="DD/MM/YYYY" required="required">
+            </label>            
+            <label for="textinput-dt_solicitao_mud" class="item item-input item-stacked-label">
+              <span class="input-label">Aceita mudança de plantão?</span>
               <input type="date" placeholder="Dt _solicitao _mud" ng-model="Solicitacao_Mudanca.active.dt_solicitao_mud" id="textinput-dt_solicitao_mud" name="textinput-dt_solicitao_mud" mask="DD/MM/YYYY" required="required">
             </label>
-            <!-- cd_status_mud begin -->
-            
           </div>
         </fieldset>
       </form>

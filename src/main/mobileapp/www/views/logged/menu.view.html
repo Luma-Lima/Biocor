@@ -18,7 +18,7 @@
       <ion-content data-container="true" class="scroll-content has-header" data-component="crn-ion-content"> 
         <ion-list> 
           <!-- Menu --> 
-          <div class="component-holder" data-component="crn-navbar" id="crn-navbar-986427"> 
+          <div class="component-holder" data-component="crn-navbar" id="crn-navbar-986427" ng-init="cronapi.client('js.blockly.SolicitacaoMudanca.Executar').run()"> 
             <div class="nav navbar-nav"> 
               <div class="item item-divider"> 
                 <i class="icon ion-ios-person"></i> &nbsp; {{session.user.name}} 
@@ -36,7 +36,7 @@
               </div><div menu-close="" class="item-icon-left item item-complex" data-component="crn-anchor" href="#/app/logged/agenda"> 
                 <a class="item-content ng-binding" href="#/app/logged/admin/agenda"> <i class="icon ion ion-android-calendar"></i> <label>Agenda</label></a> 
               </div><div menu-close="" class="item-icon-left item item-complex" data-component="crn-anchor" href="#/app/logged/solicitacao_mudanca"> 
-                <a class="item-content ng-binding" href="#/app/logged/admin/solicitacao_mudanca"> <i class="icon ion ion-ios-shuffle-strong"></i> <label>Solicitação Mudança</label> <div class="notification-bullet"> </div></div> </a> 
+                <a class="item-content ng-binding" href="#/app/logged/admin/solicitacao_mudanca"> <i class="icon ion ion-ios-shuffle-strong"></i> <label>Solicitação Mudança</label> <div class="notification-bullet" ng-if="vars.existeSolicitacao"> </div></a></div><a class="item-content ng-binding" href="#/app/logged/admin/solicitacao_mudanca"> </a> 
               </div><div menu-close="" class="item-icon-left item item-complex" data-component="crn-anchor" href="#/app/logged/solicitacao_mudanca" cronapp-security="visible : Administrators, enabled : Administrators"> 
                 <a class="item-content ng-binding" href="#/app/logged/admin/local_plantao"> <i class="icon ion ion-ios-shuffle-strong"></i> <label>Local Plantão</label></a> 
               </div><div menu-close="" class="item-icon-left item item-complex" data-component="crn-anchor" href="#/app/logged/solicitacao_mudanca" cronapp-security="visible : Administrators, enabled : Administrators"> 
@@ -53,10 +53,10 @@
               </div> 
                
             </div> 
-          </div> 
+          </ion-list></ion-content></ion-side-menu></div> 
           <!-- Menu --> 
-        </ion-list> 
-      </ion-content> 
-    </ion-side-menu> 
-  </div> 
+         
+       
+     
+   
 </ion-side-menus>
