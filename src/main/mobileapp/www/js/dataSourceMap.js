@@ -20,6 +20,7 @@ window.dataSourceMap["app.Medico"] = { customId: "app.entity.Medico", serviceUrl
 window.dataSourceMap["app.Convenio"] = { customId: "app.entity.Convenio", serviceUrl: "api/cronapi/crud/app.entity.Convenio", serviceUrlODATA: "/api/cronapi/odata/v2/app/Convenio" };
 window.dataSourceMap["app.Hospitais"] = { customId: "app.entity.Hospitais", serviceUrl: "api/cronapi/crud/app.entity.Hospitais", serviceUrlODATA: "/api/cronapi/odata/v2/app/Hospitais" };
 window.dataSourceMap["app.UserLog"] = { customId: "UserLog", serviceUrl: "api/cronapi/odata/v2/UserLog/", serviceUrlODATA: "/api/cronapi/odata/v2/app/UserLog" };
+window.dataSourceMap["app.query636819"] = { customId: "query636819", serviceUrl: "api/cronapi/odata/v2/query636819/", serviceUrlODATA: "/api/cronapi/odata/v2/app/query636819" };
 window.dataSourceMap["app.query159796"] = { customId: "UserLogado", serviceUrl: "api/cronapi/odata/v2/UserLogado/", serviceUrlODATA: "/api/cronapi/odata/v2/app/UserLogado" };
 window.dataSourceMap["app.auth"] = { customId: "auth", serviceUrl: "api/cronapi/query/auth/", serviceUrlODATA: "/api/cronapi/odata/v2/app/auth" };
 window.dataSourceMap["app.Agenda"] = { customId: "app.entity.Agenda", serviceUrl: "api/cronapi/crud/app.entity.Agenda", serviceUrlODATA: "/api/cronapi/odata/v2/app/Agenda" };
