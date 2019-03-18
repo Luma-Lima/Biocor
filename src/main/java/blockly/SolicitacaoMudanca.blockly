@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="src/main/mobileapp/www/views/logged/admin/solicitacao_mudanca.view.html" resourceType="JAVA" ruleDescription="SolicitacaoMudanca" ruleName="SolicitacaoMudanca" ruleSynchronous="false" ruleTimeout="300" ruleType="I">
-  <metadata scale="1" scrollx="539.4" scrolly="-792.3999999999999" target="XFB9/XGhCDK%_74F)c(+"/>
+  <metadata scale="1" scrollx="464.4" scrolly="-105.5" target="7bjpPzeNr}Vmxfwgx4?u"/>
   <block colour="#995ba5" id=".tH%/@.;m6YiF:%ZRs_?" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-350" y="130">
     <mutation>
       <arg name="idSolicitacaoMudanca"/>
@@ -158,7 +158,7 @@
             </value>
             <next>
               <block colour="#487f7f" dependencyby="7bjpPzeNr}Vmxfwgx4?u" id="R3%=g/l:dZ$KLrdFuU2;" multilayer="false" namespace="cronapi.util.Operations.callBlocklyNoReturn" origintype="procedures_callblockly_callnoreturn" output="false" returntype="ObjectType.VOID" tooltip="%3Cdiv%20class=%22name%22%3E%3Cstrong%3ENome:%3C/strong%3E%3Cdiv%3EChamar%20Bloco%20sem%20retorno%3C/div%3E%3C/div%3E%3Cdiv%20class=%22description%22%3E%3Cstrong%3EDescri%C3%A7%C3%A3o:%3C/strong%3E%3Cdiv%3EFun%C3%A7%C3%A3o%20que%20chama%20um%20bloco%20sem%20retorno%3C/div%3E%3C/div%3E%3Cdiv%20class=%22params%22%3E%3Cstrong%3EParam%C3%AAtro:%3C/strong%3E%3Cdiv%3E%3Cspan%3E%20-%20Nome%20do%20bloco%20:%20Texto%3C/span%3E%3Cbr%3E%3Cspan%3E%20-%20Par%C3%A2metros%20:%20Texto%3C/span%3E%3Cbr%3E%3C/div%3E%3C/div%3E%3Cdiv%20class=%22link%22%3E%3Cstrong%3EAjuda:%3C/strong%3E%3Cdiv%20class=%22tooltip-link%22%3E%3Ca%20target=%22_blank%22%20href=%22https://docs.cronapp.io/display/CRON2/cronapi.util.Operations.callBlocklyNoReturn%22%3Ehttps://docs.cronapp.io/display/CRON2/cronapi.util.Operations.callBlocklyNoReturn%3C/a%3E%3C/div%3E%3C/div%3E" type="procedures_callblockly_callnoreturn">
-                <mutation data="%7B%22name%22:%22SolicitacaoMudanca%22,%22class%22:%22blockly.SolicitacaoMudanca%22,%22function%22:%22enviarNotificacao%22,%22oldName%22:%22enviarNotificacao%22,%22params%22:%22%5B%5C%22solicitacaoMudanca%5C%22,%5C%22aceito%5C%22%5D%22,%22type%22:%22ALL%22,%22namespace%22:%22blockly.SolicitacaoMudanca%22,%22jsonBlocklySelected%22:%7B%22namespace%22:%22blockly.SolicitacaoMudanca%22,%22sourcePath%22:%22src/main/java/blockly/SolicitacaoMudanca.blockly%22,%22language%22:%22java%22,%22class%22:%22blockly.SolicitacaoMudanca%22,%22methods%22:%5B%7B%22name%22:%22confirmar%22,%22hasReturn%22:%22true%22,%22params%22:%5B%22idSolicitacaoMudanca%22%5D%7D,%7B%22name%22:%22recusar%22,%22hasReturn%22:%22true%22,%22params%22:%5B%22idSolicitacaoMudanca%22%5D%7D,%7B%22name%22:%22existePedido%22,%22hasReturn%22:%22true%22,%22params%22:%5B%5D%7D,%7B%22name%22:%22enviarNotificacao%22,%22hasReturn%22:%22false%22,%22params%22:%5B%22solicitacaoMudanca%22,%22aceito%22%5D%7D%5D%7D,%22functionReturn%22:false%7D" name="{{cronapi.util.Operations.callBlocklyNoReturn}}">
+                <mutation data="%7B%22name%22:%22SolicitacaoMudanca%22,%22class%22:%22blockly.SolicitacaoMudanca%22,%22function%22:%22enviarNotificacao%22,%22oldName%22:%22enviarNotificacao%22,%22params%22:%22%5B%5C%22solicitacaoMudanca%5C%22,%5C%22aceito%5C%22%5D%22,%22type%22:%22java%22,%22namespace%22:%22blockly.SolicitacaoMudanca%22,%22jsonBlocklySelected%22:%7B%22namespace%22:%22blockly.SolicitacaoMudanca%22,%22sourcePath%22:%22src/main/java/blockly/SolicitacaoMudanca.blockly%22,%22language%22:%22java%22,%22class%22:%22blockly.SolicitacaoMudanca%22,%22methods%22:%5B%7B%22name%22:%22confirmar%22,%22hasReturn%22:%22true%22,%22params%22:%5B%22idSolicitacaoMudanca%22%5D%7D,%7B%22name%22:%22recusar%22,%22hasReturn%22:%22true%22,%22params%22:%5B%22idSolicitacaoMudanca%22%5D%7D,%7B%22name%22:%22existePedido%22,%22hasReturn%22:%22true%22,%22params%22:%5B%5D%7D,%7B%22name%22:%22enviarNotificacao%22,%22hasReturn%22:%22false%22,%22params%22:%5B%22solicitacaoMudanca%22,%22aceito%22%5D%7D%5D%7D%7D" name="{{cronapi.util.Operations.callBlocklyNoReturn}}">
                   <arg name="solicitacaoMudanca"/>
                   <arg name="aceito"/>
                 </mutation>
@@ -341,7 +341,7 @@
             <field name="VAR">texto</field>
             <value name="VALUE">
               <block colour="#5ba593" dependencyby="XFB9/XGhCDK%_74F)c(+" id="bqyOjl9b=jZ%R,w4uPK~" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
-                <field name="TEXT">Confirmação Mudança Plantão</field>
+                <field name="TEXT">Confirmacao Mudanca Plantao</field>
               </block>
             </value>
             <next>
@@ -356,7 +356,7 @@
                     </value>
                     <value name="B">
                       <block colour="#5b80a5" dependencyby="XFB9/XGhCDK%_74F)c(+" id="]i-;g+Z(+/%kKfQ}~lyz" origintype="logic_boolean" output="true" tooltip="Retorna verdadeiro ou falso." type="logic_boolean">
-                        <field name="BOOL">TRUE</field>
+                        <field name="BOOL">FALSE</field>
                       </block>
                     </value>
                   </block>
@@ -418,6 +418,9 @@
                           <shadow colour="#5ba593" dependencyby="XFB9/XGhCDK%_74F)c(+" id="2g:Sn*z6htN074TBaB]0" origintype="text" output="true" tooltip="function () { [native code] }" type="text">
                             <field name="TEXT"/>
                           </shadow>
+                          <block colour="#0088ee" dependencyby="XFB9/XGhCDK%_74F)c(+" id="=2O4mZ4X0PWo}S^y[#BC" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
+                            <field name="VAR">texto</field>
+                          </block>
                         </value>
                         <value name="ARG3">
                           <shadow colour="#5ba593" dependencyby="XFB9/XGhCDK%_74F)c(+" id="z+xDjdtK|btHg5H$|%]9" origintype="text" output="true" tooltip="function () { [native code] }" type="text">

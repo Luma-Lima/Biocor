@@ -72,6 +72,7 @@ public static Var recusar(Var idSolicitacaoMudanca) throws Exception {
    public Var call() throws Exception {
     solicitacaoMudanca = cronapi.database.Operations.query(Var.valueOf("app.entity.Solicitacao_Mudanca"),Var.valueOf("select s from Solicitacao_Mudanca s where s.id = :id"),Var.valueOf("id",idSolicitacaoMudanca));
     cronapi.database.Operations.execute(Var.valueOf("app.entity.Solicitacao_Mudanca"), Var.valueOf("update Solicitacao_Mudanca set cd_status_mud = :cd_status_mud where id = :id"),Var.valueOf("cd_status_mud",Var.valueOf(2)),Var.valueOf("id",idSolicitacaoMudanca));
+    blockly.SolicitacaoMudanca.enviarNotificacao(solicitacaoMudanca, Var.VAR_FALSE);
     retorno = Var.valueOf("OK");
     return retorno;
    }
@@ -93,13 +94,13 @@ public static void enviarNotificacao(Var solicitacaoMudanca, Var aceito) throws 
 
    public Var call() throws Exception {
     destinatarios = cronapi.database.Operations.query(Var.valueOf("app.entity.Device"),Var.valueOf("select d from Device d where d.user.id = :userId"),Var.valueOf("userId",cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("medicoSolic.user.id"))));
-    texto = Var.valueOf("Confirmação Mudança Plantão");
-    if (Var.valueOf(aceito.equals(Var.VAR_TRUE)).getObjectAsBoolean()) {
+    texto = Var.valueOf("Confirmacao Mudanca Plantao");
+    if (Var.valueOf(aceito.equals(Var.VAR_FALSE)).getObjectAsBoolean()) {
         texto = Var.valueOf("Medico recusou mudanca de plantao.");
     }
     for (Iterator it_item = destinatarios.iterator(); it_item.hasNext();) {
         item = Var.valueOf(it_item.next());
-        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), Var.VAR_NULL, Var.valueOf(Var.valueOf("Medico: ").toString() + cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("medicoSolic.user.name")).toString()), Var.VAR_NULL);
+        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), texto, Var.valueOf(Var.valueOf("Medico: ").toString() + cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("medicoSolic.user.name")).toString()), Var.VAR_NULL);
     } // end for
     cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("Confirmação Enviada."));
    return Var.VAR_NULL;

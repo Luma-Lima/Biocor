@@ -10,7 +10,7 @@ var device = {
     var build = window.BuildInfo;
     
     // get token firebase
-    if (firebase && hostapp && device) {
+    /*if (firebase && hostapp && device) {
       var appURL = hostapp + 'device';
       
       debugger;
@@ -23,6 +23,7 @@ var device = {
                       platformVersion : device.version,
                       model : device.model, 
                       token : code };
+        console.log('Received Token: ' + (code ? 'OK' :'NOK'));
         $.post(appURL, data).done(function(d) {
           console.log('Received Event: devicesend');
         });
@@ -31,7 +32,7 @@ var device = {
         console.error(err);
       });
       
-    }
+    }*/
   }
 };
 device.init();

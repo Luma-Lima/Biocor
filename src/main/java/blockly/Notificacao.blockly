@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JAVA" ruleDescription="Notificacao" ruleName="Notificacao" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="516.2" scrolly="-1180.6000000000004" target="XFB9/XGhCDK%_74F)c(+"/>
+  <metadata scale="1" scrollx="342.4148867545871" scrolly="-1284.4124378109461" target="_d]l[Q,;+Ao86hrljz|!"/>
   <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-497" y="334">
     <mutation>
       <arg name="agendaId"/>
@@ -1354,7 +1354,7 @@
                                                 </mutation>
                                                 <value name="PARAM0">
                                                   <block colour="#0088ee" dependencyby="_d]l[Q,;+Ao86hrljz|!" id=",)tcs:pni[C/-jx9AF4@" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                    <field name="VAR">dispositivo&lt;app.entity.Device&gt;</field>
+                                                    <field name="VAR">usuario&lt;app.entity.User&gt;</field>
                                                   </block>
                                                 </value>
                                                 <value name="PARAM1">

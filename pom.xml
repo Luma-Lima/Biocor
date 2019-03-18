@@ -34,8 +34,8 @@
                     <target>https://api.cronapp.io</target>
                     <org>adir.santos@techne.com.br</org>
                     <space>develop</space>
-                    <appname>BiocorPlantão</appname>
-                    <url>biocordev.cronapp.io</url>
+                    <appname>BiocorTeste</appname>
+                    <url>biocorteste.cronapp.io</url>
                     <instances>1</instances>
                     <memory>1024</memory>
                     <username/>
