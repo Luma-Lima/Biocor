@@ -96,7 +96,6 @@ public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var
     for (Iterator it_item = destinatarios.iterator(); it_item.hasNext();) {
         item = Var.valueOf(it_item.next());
         cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), Var.valueOf("Solicitacao Mudanca de Plantao"), Var.valueOf(Var.valueOf("Solicitante: ").toString() + cronapi.object.Operations.getObjectField(medicoSolicitante, Var.valueOf("user.name")).toString()), dados);
-        System.out.println(Var.valueOf(Var.valueOf("ENVIANDO SOLICITACAO: ").toString() + cronapi.util.Operations.getCurrentUserName().toString() + Var.valueOf("TOKEN:  ").toString() + cronapi.object.Operations.getObjectField(item, Var.valueOf("token")).toString()).getObjectAsString());
     } // end for
     cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("Solicitação de Mudança Enviada."));
    return Var.VAR_NULL;
@@ -129,12 +128,10 @@ public static void gravarDispositivo(Var dados) throws Exception {
                     cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("user"), cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")))));
                     cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("token"), token);
                     cronapi.database.Operations.update(Var.valueOf("app.entity.Device"),dispositivo);
-                    System.out.println(Var.valueOf(Var.valueOf("ATUALIZANDO: ").toString() + cronapi.util.Operations.getCurrentUserName().toString() + Var.valueOf("DISPOSITIVO:  ").toString() + dispositivo.toString()).getObjectAsString());
                 }
             } else {
                 dispositivo = cronapi.object.Operations.newObject(Var.valueOf("app.entity.Device"),Var.valueOf("id",uuid),Var.valueOf("token",token),Var.valueOf("platform",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("platform"))),Var.valueOf("model",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("model"))),Var.valueOf("platformVersion",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("platformVersion"))),Var.valueOf("appName",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("appName"))),Var.valueOf("appVersion",cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("appVersion"))),Var.valueOf("user",cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id"))))));
                 cronapi.database.Operations.insert(Var.valueOf("app.entity.Device"),dispositivo);
-                System.out.println(Var.valueOf(Var.valueOf("INSERINDO: ").toString() + cronapi.util.Operations.getCurrentUserName().toString() + Var.valueOf("DISPOSITIVO:  ").toString() + dispositivo.toString()).getObjectAsString());
             }
         }
      } catch (Exception ex1_exception) {

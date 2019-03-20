@@ -100,8 +100,7 @@ public static void enviarNotificacao(Var solicitacaoMudanca, Var aceito) throws 
     }
     for (Iterator it_item = destinatarios.iterator(); it_item.hasNext();) {
         item = Var.valueOf(it_item.next());
-        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), texto, Var.valueOf(Var.valueOf("Medico: ").toString() + cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("medicoSolic.user.name")).toString()), Var.VAR_NULL);
-        System.out.println(Var.valueOf(Var.valueOf("ENVIANDO RESPOSTA: ").toString() + cronapi.util.Operations.getCurrentUserName().toString() + Var.valueOf("TOKEN:  ").toString() + cronapi.object.Operations.getObjectField(item, Var.valueOf("token")).toString()).getObjectAsString());
+        cronapi.pushnotification.Operations.sendNotification(blockly.Notificacao.obterChaveServidor(), cronapi.object.Operations.getObjectField(item, Var.valueOf("token")), texto, Var.valueOf(Var.valueOf("Medico: ").toString() + cronapi.object.Operations.getObjectField(solicitacaoMudanca, Var.valueOf("medicoDest.user.name")).toString()), Var.VAR_NULL);
     } // end for
     cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("Mensagem Enviada."));
    return Var.VAR_NULL;

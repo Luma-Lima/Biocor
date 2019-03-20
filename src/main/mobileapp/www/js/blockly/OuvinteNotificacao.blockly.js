@@ -7,7 +7,7 @@ window.blockly.js.blockly.OuvinteNotificacao = window.blockly.js.blockly.Ouvinte
  * OuvinteNotificacao
  */
 window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
- var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
+ var item, dados, token, deviceUUID, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
   firebaseTokenCode = this.cronapi.util.executeJavascriptReturn('window.firebaseTokenCode ? window.firebaseTokenCode : \'\';');
   deviceUUID = this.cronapi.util.executeJavascriptReturn('window.deviceUUID ? window.deviceUUID : \'\';');
   if (this.cronapi.logic.isNullOrEmpty(deviceUUID)) {
@@ -47,7 +47,6 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
       this.cronapi.object.setProperty(dados, 'token', token);
       this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:gravarDispositivo', dados);
       this.cronapi.screen.notify('success',['uuid:',deviceUUID,'token:',token.slice(0, 8)].join(''));
-      this.cronapi.util.executeJavascriptNoReturn(String('window.firebaseTokenCode = ') + String(token));
     }.bind(this), function(sender_item) {
         item = sender_item;
     }.bind(this));
@@ -60,7 +59,7 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
  * Descreva esta função...
  */
 window.blockly.js.blockly.OuvinteNotificacao.solicitarMudancaAgenda = function(agendaId, usuarioDestinoId) {
- var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName;
+ var item, dados, token, deviceUUID, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName;
   this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:solicitarMudancaAgenda', agendaId, usuarioDestinoId);
 }
 
@@ -68,7 +67,7 @@ window.blockly.js.blockly.OuvinteNotificacao.solicitarMudancaAgenda = function(a
  * Descreva esta função...
  */
 window.blockly.js.blockly.OuvinteNotificacao.ouvir = function() {
- var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
+ var item, dados, token, deviceUUID, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
   this.cronapi.cordova.device.getFirebaseNotificationData(function(sender_dados) {
       dados = sender_dados;
     this.cronapi.screen.notify('success',dados);
