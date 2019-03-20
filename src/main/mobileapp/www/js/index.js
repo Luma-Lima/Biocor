@@ -10,11 +10,20 @@ var device = {
     var build = window.BuildInfo;
     
     // get token firebase
-    /*if (firebase && hostapp && device) {
+    if (firebase && hostapp && device) {
       var appURL = hostapp + 'device';
       
+      var data  = { id : device.uuid, 
+                    appName : build.packageName,
+                    appVersion : build.version,
+                    platform : device.platform, 
+                    platformVersion : device.version,
+                    model : device.model};
+
+      alert('device: ' + data);
+
       debugger;
-      firebase.getToken(function(code) {
+      /*firebase.getToken(function(code) {
         debugger;
         var data  = { id : device.uuid, 
                       appName : build.packageName,
@@ -31,8 +40,8 @@ var device = {
       function(err) {
         console.error(err);
       });
-      
-    }*/
+      */
+    }
   }
 };
 device.init();

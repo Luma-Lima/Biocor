@@ -18,6 +18,7 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
     this.cronapi.object.setProperty(dados, 'model', this.cronapi.cordova.device.getDeviceInfo('model'));
     this.cronapi.object.setProperty(dados, 'platformVersion', this.cronapi.cordova.device.getDeviceInfo('version'));
     this.cronapi.object.setProperty(dados, 'uuid', this.cronapi.cordova.device.getDeviceInfo('uuid'));
+    this.cronapi.screen.notify('success',['uuid:',this.cronapi.cordova.device.getDeviceInfo('uuid'),'token:',token.slice(0, 8)].join(''));
     this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:gravarDispositivo', dados);
   }.bind(this), function(sender_item) {
       item = sender_item;
