@@ -20,6 +20,7 @@ var device = {
       window.devicePlatformVersion = device.version;
       window.deviceModel = device.model;
 
+      console.log('device: ' + JSON.stringify(device));
       console.log('deviceUUID: ' + JSON.stringify(window.deviceUUID));
       
       debugger;
