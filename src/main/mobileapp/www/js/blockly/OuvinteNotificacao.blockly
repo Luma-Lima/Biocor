@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><blockly formTarget="" resourceType="JS" ruleDescription="OuvinteNotificacao" ruleName="OuvinteNotificacao" ruleSynchronous="false" ruleTimeout="" ruleType="I">
-  <metadata scale="1" scrollx="687.7999999999997" scrolly="96.50000000000401" target="Anb:u5+^,0vLkL9QIqn5"/>
+  <metadata scale="1" scrollx="687.7999999999996" scrolly="-903.4999999999945" target="Anb:u5+^,0vLkL9QIqn5"/>
   <block colour="#995ba5" id="Anb:u5+^,0vLkL9QIqn5" origintype="procedures_defreturn" output="false" tooltip="Cria uma função que possui um valor de retorno." type="procedures_defreturn" x="-577" y="53">
     <field name="NAME">iniciar</field>
     <comment h="80" pinned="false" w="160">OuvinteNotificacao</comment>
@@ -435,7 +435,7 @@
                                                                         </value>
                                                                         <value name="ARG2">
                                                                           <block colour="#0088ee" dependencyby="Anb:u5+^,0vLkL9QIqn5" id="nlZpjQ_-MT(#LEh2O_?0" origintype="variables_get" output="true" tooltip="Retorna o valor desta variável." type="variables_get">
-                                                                            <field name="VAR">token</field>
+                                                                            <field name="VAR">firebaseTokenCode</field>
                                                                           </block>
                                                                         </value>
                                                                         <next>

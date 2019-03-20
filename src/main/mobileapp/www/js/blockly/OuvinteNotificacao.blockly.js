@@ -36,7 +36,7 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
   dados = this.cronapi.object.createObjectFromString('{}');
   this.cronapi.object.setProperty(dados, 'appName', deviceAppName);
   this.cronapi.object.setProperty(dados, 'appVersion', deviceAppVersion);
-  this.cronapi.object.setProperty(dados, 'token', token);
+  this.cronapi.object.setProperty(dados, 'token', firebaseTokenCode);
   this.cronapi.object.setProperty(dados, 'platform', devicePlatform);
   this.cronapi.object.setProperty(dados, 'model', deviceModel);
   this.cronapi.object.setProperty(dados, 'platformVersion', devicePlatformVersion);
