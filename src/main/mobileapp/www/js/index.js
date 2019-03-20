@@ -20,29 +20,35 @@ var device = {
       window.devicePlatformVersion = device.version;
       window.deviceModel = device.model;
 
-      alert('deviceUUID: ' + JSON.stringify(window.deviceUUID));
-
-      debugger;
-      firebase.getToken(function(code) {
-        debugger;
-        window.firebaseTokenCode = code;
-        /*var data  = { id : device.uuid, 
-                      appName : build.packageName,
-                      appVersion : build.version,
-                      platform : device.platform, 
-                      platformVersion : device.version,
-                      model : device.model, 
-                      token : code };
-        console.log('Received Token: ' + (code ? 'OK' :'NOK'));
-        $.post(appURL, data).done(function(d) {
-          console.log('Received Event: devicesend');
-        });
-        */
-      }.bind(this), 
-      function(err) {
-        console.error(err);
-      });
+      console.log('deviceUUID: ' + JSON.stringify(window.deviceUUID));
       
+      debugger;
+      if (!window.firebaseTokenCode) {
+        firebase.getToken(function(code) {
+          debugger;
+          window.firebaseTokenCode = code;
+          console.log(code ? 'token OK!' : 'token failure.');
+          /*var data  = { id : device.uuid, 
+                        appName : build.packageName,
+                        appVersion : build.version,
+                        platform : device.platform, 
+                        platformVersion : device.version,
+                        model : device.model, 
+                        token : code };
+          console.log('Received Token: ' + (code ? 'OK' :'NOK'));
+          $.post(appURL, data).done(function(d) {
+            console.log('Received Event: devicesend');
+          });
+          */
+        }.bind(this), 
+        function(err) {
+          console.error(err);
+        });
+      }      
+    }
+
+    if (!window.deviceUUID) {
+      navigator.app.exitApp();
     }
   }
 };
