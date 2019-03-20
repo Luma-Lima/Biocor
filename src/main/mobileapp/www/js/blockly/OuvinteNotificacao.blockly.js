@@ -7,7 +7,7 @@ window.blockly.js.blockly.OuvinteNotificacao = window.blockly.js.blockly.Ouvinte
  * OuvinteNotificacao
  */
 window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
- var item, agendaId, dados, deviceAppName, deviceAppVersion, deviceModel, devicePlatform, devicePlatformVersion, deviceUUID, firebaseTokenCode, token, usuarioDestinoId;
+ var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
   firebaseTokenCode = this.cronapi.util.executeJavascriptReturn('window.firebaseTokenCode ? window.firebaseTokenCode : \'\';');
   deviceUUID = this.cronapi.util.executeJavascriptReturn('window.deviceUUID ? window.deviceUUID : \'\';');
   if (this.cronapi.logic.isNullOrEmpty(deviceUUID)) {
@@ -45,13 +45,14 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
     this.cronapi.cordova.device.getFirebaseToken(function(sender_token) {
         token = sender_token;
       this.cronapi.object.setProperty(dados, 'token', token);
+      this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:gravarDispositivo', dados);
       this.cronapi.screen.notify('success',['uuid:',deviceUUID,'token:',token.slice(0, 8)].join(''));
       this.cronapi.util.executeJavascriptNoReturn(String('window.firebaseTokenCode = ') + String(token));
     }.bind(this), function(sender_item) {
         item = sender_item;
     }.bind(this));
   } else {
-    this.cronapi.screen.notify('success',['uuid:',deviceUUID,'token:',firebaseTokenCode.slice(0, 8)].join(''));
+    this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:gravarDispositivo', dados);
   }
 }
 
@@ -59,7 +60,7 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
  * Descreva esta função...
  */
 window.blockly.js.blockly.OuvinteNotificacao.solicitarMudancaAgenda = function(agendaId, usuarioDestinoId) {
- var item, dados, deviceAppName, deviceAppVersion, deviceModel, devicePlatform, devicePlatformVersion, deviceUUID, firebaseTokenCode, token;
+ var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName;
   this.cronapi.util.callServerBlocklyNoReturn('blockly.Notificacao:solicitarMudancaAgenda', agendaId, usuarioDestinoId);
 }
 
@@ -67,7 +68,7 @@ window.blockly.js.blockly.OuvinteNotificacao.solicitarMudancaAgenda = function(a
  * Descreva esta função...
  */
 window.blockly.js.blockly.OuvinteNotificacao.ouvir = function() {
- var item, agendaId, dados, deviceAppName, deviceAppVersion, deviceModel, devicePlatform, devicePlatformVersion, deviceUUID, firebaseTokenCode, token, usuarioDestinoId;
+ var item, token, deviceUUID, dados, firebaseTokenCode, devicePlatformVersion, deviceModel, devicePlatform, deviceAppVersion, deviceAppName, usuarioDestinoId, agendaId;
   this.cronapi.cordova.device.getFirebaseNotificationData(function(sender_dados) {
       dados = sender_dados;
     this.cronapi.screen.notify('success',dados);
