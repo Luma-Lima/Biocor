@@ -80,8 +80,8 @@ public static Var solicitarMudancaAgenda(Var agendaId, Var usuarioDestinoId) thr
 public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var medicoDestino) throws Exception {
   new Callable<Var>() {
 
-   private Var solicitacaoMudanca = Var.VAR_NULL;
    private Var dados = Var.VAR_NULL;
+   private Var solicitacaoMudanca = Var.VAR_NULL;
    private Var idSolicitacaoMudanca = Var.VAR_NULL;
    private Var destinatarios = Var.VAR_NULL;
    private Var item = Var.VAR_NULL;
@@ -111,21 +111,21 @@ public static void enviarNotificacao(Var agendaAtual, Var medicoSolicitante, Var
 public static void gravarDispositivo(Var dados) throws Exception {
   new Callable<Var>() {
 
+   private Var usuario = Var.VAR_NULL;
    private Var uuid = Var.VAR_NULL;
    private Var token = Var.VAR_NULL;
    private Var dispositivo = Var.VAR_NULL;
-   private Var usuario = Var.VAR_NULL;
 
    public Var call() throws Exception {
+    usuario = cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u from User u where u.login = :login"),Var.valueOf("login",cronapi.util.Operations.getCurrentUserName()));
     uuid = cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("uuid"));
     if (cronapi.logic.Operations.isNullOrEmpty(uuid).getObjectAsBoolean()) {
-        uuid = Var.valueOf(Var.valueOf("crn-").toString() + cronapi.util.Operations.generateUUID().toString());
+        uuid = Var.valueOf(Var.valueOf("crn-").toString() + cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")).toString());
     }
     token = cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("token"));
     try {
          if (cronapi.logic.Operations.isNullOrEmpty(uuid).negate().getObjectAsBoolean()) {
             dispositivo = cronapi.database.Operations.query(Var.valueOf("app.entity.Device"),Var.valueOf("select d from Device d where d.id = :id"),Var.valueOf("id",uuid));
-            usuario = cronapi.database.Operations.query(Var.valueOf("app.entity.User"),Var.valueOf("select u from User u where u.login = :login"),Var.valueOf("login",cronapi.util.Operations.getCurrentUserName()));
             if (Var.valueOf(Var.valueOf(!dispositivo.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(dispositivo, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
                 if (Var.valueOf(Var.valueOf(!usuario.equals(Var.VAR_NULL)).getObjectAsBoolean() && Var.valueOf(!cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")).equals(Var.VAR_NULL)).getObjectAsBoolean()).getObjectAsBoolean()) {
                     cronapi.object.Operations.setObjectField(dispositivo, Var.valueOf("user"), cronapi.object.Operations.newObject(Var.valueOf("app.entity.User"),Var.valueOf("id",cronapi.object.Operations.getObjectField(usuario, Var.valueOf("id")))));
@@ -154,6 +154,11 @@ public static void gravarDispositivo(Var dados) throws Exception {
 public static Var obterChaveServidor() throws Exception {
  return new Callable<Var>() {
 
+   private Var usuario = Var.VAR_NULL;
+   private Var uuid = Var.VAR_NULL;
+   private Var dados = Var.VAR_NULL;
+   private Var token = Var.VAR_NULL;
+   private Var dispositivo = Var.VAR_NULL;
    private Var agendaId = Var.VAR_NULL;
    private Var usuarioDestinoId = Var.VAR_NULL;
    private Var agenda = Var.VAR_NULL;
@@ -162,11 +167,6 @@ public static Var obterChaveServidor() throws Exception {
    private Var medicoSolicitante = Var.VAR_NULL;
    private Var agendaMedicoDest = Var.VAR_NULL;
    private Var solicitacaoMudanca = Var.VAR_NULL;
-   private Var uuid = Var.VAR_NULL;
-   private Var dados = Var.VAR_NULL;
-   private Var token = Var.VAR_NULL;
-   private Var dispositivo = Var.VAR_NULL;
-   private Var usuario = Var.VAR_NULL;
 
    public Var call() throws Exception {
     return Var.valueOf("AAAAYXpS-3s:APA91bHKz9BApNs3EHNG-moJ7czTOFL5b55D-miNbShiLClZ3r925zz2kf6lGktkqdrNMuxng3UxYsNFqrAmS-6C7Uu9KfHnq8g1MivlT3pmYOKEaut07U4TJSjgL16ZoYzvqMeGxc6P");
