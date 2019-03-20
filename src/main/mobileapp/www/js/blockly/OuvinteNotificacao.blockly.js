@@ -8,6 +8,7 @@ window.blockly.js.blockly.OuvinteNotificacao = window.blockly.js.blockly.Ouvinte
  */
 window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
  var item, agendaId, dados, deviceAppName, deviceAppVersion, deviceModel, devicePlatform, devicePlatformVersion, deviceUUID, firebaseTokenCode, token, usuarioDestinoId;
+  firebaseTokenCode = this.cronapi.util.executeJavascriptReturn('window.firebaseTokenCode ? window.firebaseTokenCode : \'\';');
   deviceUUID = this.cronapi.util.executeJavascriptReturn('window.deviceUUID ? window.deviceUUID : \'\';');
   if (this.cronapi.logic.isNullOrEmpty(deviceUUID)) {
     deviceUUID = this.cronapi.cordova.device.getDeviceInfo('uuid');
@@ -44,8 +45,8 @@ window.blockly.js.blockly.OuvinteNotificacao.iniciar = function() {
     this.cronapi.cordova.device.getFirebaseToken(function(sender_token) {
         token = sender_token;
       this.cronapi.object.setProperty(dados, 'token', token);
-      this.cronapi.util.executeJavascriptNoReturn(String('window.firebaseTokenCode = ') + String(token));
       this.cronapi.screen.notify('success',['uuid:',deviceUUID,'token:',token.slice(0, 8)].join(''));
+      this.cronapi.util.executeJavascriptNoReturn(String('window.firebaseTokenCode = ') + String(token));
     }.bind(this), function(sender_item) {
         item = sender_item;
     }.bind(this));

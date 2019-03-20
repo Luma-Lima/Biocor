@@ -20,7 +20,7 @@ var device = {
       window.devicePlatformVersion = device.version;
       window.deviceModel = device.model;
 
-      alert('deviceUUID: ' + JSON.stringify( deviceUUID));
+      alert('deviceUUID: ' + JSON.stringify(window.deviceUUID));
 
       debugger;
       firebase.getToken(function(code) {
