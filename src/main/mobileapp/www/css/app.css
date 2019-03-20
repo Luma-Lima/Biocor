@@ -153,3 +153,10 @@ mwl-calendar .cal-slide-content{
   right: 20px;
   top: 24px;
   }
+
+  /** REMOVENDO BULLET'S DO CALENDÁRIO */
+
+mwl-calendar .event{
+  display: none !important;
+}
+  
