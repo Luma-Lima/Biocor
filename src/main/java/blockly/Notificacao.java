@@ -118,6 +118,9 @@ public static void gravarDispositivo(Var dados) throws Exception {
 
    public Var call() throws Exception {
     uuid = cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("uuid"));
+    if (cronapi.logic.Operations.isNullOrEmpty(uuid).getObjectAsBoolean()) {
+        uuid = Var.valueOf(Var.valueOf("crn-").toString() + cronapi.util.Operations.generateUUID().toString());
+    }
     token = cronapi.json.Operations.getJsonOrMapField(dados, Var.valueOf("token"));
     try {
          if (cronapi.logic.Operations.isNullOrEmpty(uuid).negate().getObjectAsBoolean()) {
