@@ -13,19 +13,20 @@ var device = {
     if (firebase && hostapp && device) {
       var appURL = hostapp + 'device';
       
-      var data  = { id : device.uuid, 
-                    appName : build.packageName,
-                    appVersion : build.version,
-                    platform : device.platform, 
-                    platformVersion : device.version,
-                    model : device.model};
+      window.deviceUUID = device.uuid; 
+      window.deviceAppName = build.packageName;
+      window.deviceAppVersion = build.version;
+      window.devicePlatform = device.platform; 
+      window.devicePlatformVersion = device.version;
+      window.deviceModel = device.model;
 
-      alert('device: ' + data);
+      alert('deviceUUID: ' + JSON.stringify( deviceUUID));
 
       debugger;
-      /*firebase.getToken(function(code) {
+      firebase.getToken(function(code) {
         debugger;
-        var data  = { id : device.uuid, 
+        window.firebaseTokenCode = code;
+        /*var data  = { id : device.uuid, 
                       appName : build.packageName,
                       appVersion : build.version,
                       platform : device.platform, 
@@ -36,11 +37,12 @@ var device = {
         $.post(appURL, data).done(function(d) {
           console.log('Received Event: devicesend');
         });
+        */
       }.bind(this), 
       function(err) {
         console.error(err);
       });
-      */
+      
     }
   }
 };
