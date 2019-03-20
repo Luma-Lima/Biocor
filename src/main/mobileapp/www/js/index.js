@@ -21,7 +21,6 @@ var device = {
       window.deviceModel = device.model;
 
       console.log('device: ' + JSON.stringify(device));
-      console.log('deviceUUID: ' + JSON.stringify(window.deviceUUID));
       
       debugger;
       if (!window.firebaseTokenCode) {
@@ -46,10 +45,6 @@ var device = {
           console.error(err);
         });
       }      
-    }
-
-    if (!window.deviceUUID) {
-      navigator.app.exitApp();
     }
   }
 };
