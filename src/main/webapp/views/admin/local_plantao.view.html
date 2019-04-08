@@ -1,115 +1,87 @@
-<h3></h3>
+<h3 class="lead component-holder text-left">Local_Plantao</h3>
 
-<!-- div row para pesquisa -->
-<!--<div class="row">-->
+<datasource data-component="crn-datasource" filter="" name="Local_Plantao" entity="app.Local_Plantao" keys="id" rows-per-page="100" class="" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_local_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais_nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" lazy="true"></datasource>
 
-
-<div data-component="crn-button" id="crn-button-564202" class="">
-    <button class="btn btn-primary" type="submit" onclick="" data-component="crn-button" ng-click="Local_Plantao.startInserting()" ng-hide="Local_Plantao.inserting || Local_Plantao.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
-</div>
-<!-- fim div row para pesquisa -->
-<!--</div>-->
-
-<datasource filter="" name="Local_Plantao" entity="api/cronapi/crud/app.entity.Local_Plantao" keys="cd_codigo_lpl" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
-<div class="component-holder" data-component="crn-grid" id="crn-grid-Local_Plantao">
-    <div crn-datasource="Local_Plantao" class="" ng-hide="Local_Plantao.editing || Local_Plantao.inserting">
-        <table class="table  table-bordered table-hover table-striped">
-            <thead>
-            <tr class="table-header">
-                <th class="">
-                    <div class="">Local Plantão</div>
-                </th>
-                <th class="">
-                    <div class="">Hospitais</div>
-                </th>
-                <th class="">
-                    <div class="">{{"template.crud.actions" | translate}}</div>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="table-content" ng-repeat="rowData in datasource.data">
-                <td class="">
-                    <div class="">
-                                {{rowData.nm_local_lpl  }}
-                    </div>
-                </td>
-                <td class="">
-                    <div class="">
-                            {{rowData.hospitais.nm_hospital_hsp}}
-                    </div>
-                </td>
-                <td class="">
-                    <div class="">
-                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
-                        <button class="btn btn-default btn-sm" data-component="crn-button" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="table-footer-controls">
-            <button class="btn btn-default btn-block btn-clicked" data-component="crn-button" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
-        </div>
+    <div ng-hide="Local_Plantao.inserting || Local_Plantao.editing" data-component="crn-datasource-filter" id="crn-datasource-filter-general30553" class="">
+      <div class="form-group">
+        <label for="textinput-filter" class="">{{"template.crud.search" | translate}}</label>
+        <input type="text" ng-model="vars.search" id="textinput-filter" class="form-control k-textbox" cronapp-filter="cd_codigo_lpl" cronapp-filter-operator="" cronapp-filter-caseinsensitive="false" cronapp-filter-autopost="true" crn-datasource="Local_Plantao" value="" placeholder="{{'template.crud.search' | translate}}">
+      </div>
     </div>
-</div>
-<div data-component="crn-form" id="crn-form-form-Local_Plantao">
-    <div class="form" ng-show="Local_Plantao.editing || Local_Plantao.inserting">
-        <form crn-datasource="Local_Plantao" class="">
-            <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
-                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
-                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
-                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
-                <button class="btn btn-primary" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
-                <button class="btn btn-primary" data-component="crn-button" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
-            </div>
-            <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
-                <button class="btn btn-success" data-component="crn-button" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
-                <button class="btn btn-danger" data-component="crn-button" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
-            </div>
-            <br>
-            <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
 
-                <div data-component="crn-textinput" id="crn-textinput-nm_local_lpl" class="">
-                    <div class="form-group">
-                        <label for="textinput-nm_local_lpl" class="">Local Plantão</label>
- <!-- else for if !model.hasCronappFramework() -->
-                                <input maxlength="50" type="text" ng-model="Local_Plantao.active.nm_local_lpl" class="form-control" id="textinput-nm_local_lpl" placeholder="Informe local do plantão. Ex: CTI A" mask="" mask-placeholder="" ng-required="false">
-                         <!-- end if !model.hasCronappFramework() -->
-                    </div>
-                </div>
-                    <datasource name="Hospitais" entity="api/cronapi/crud/app.entity.Hospitais" keys="cd_codigo_hsp" class="" dependent-by="{{Local_Plantao}}"></datasource>
-
-                <div data-component="crn-combobox-dynamic" id="crn-combobox-dynamic-hospitais" class="">
-                    <div class="form-group">
-                        <label for="combobox-dynamic-hospitais" class="">Hospitais</label>
- <!-- else for if !model.hasCronappFramework() -->
-                                <ui-select ng-model="Local_Plantao.active.hospitais" crn-datasource="Hospitais" class="crn-select" id="combobox-dynamic-hospitais" ng-required="false" theme="bootstrap">
-                                    <ui-select-match class="" placeholder="Select...">
-                                        {{$select.selected.nm_hospital_hsp}}
-                                    </ui-select-match>
-                                    <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="" refresh="" refresh-deplay="">
-                                        <div class="" data-container="true">
-                                            {{rowData.nm_hospital_hsp}}
-                                        </div>
-                                    </ui-select-choices>
-                                </ui-select>
-                         <!-- end if !model.hasCronappFramework() -->
-                    </div>
-                </div>
-                <!-- NtoN  -->
-                <!-- NtoN  end-->
-            </fieldset>
-        </form>
-        <form>
-            <fieldset>
-                <!-- OneToN -->
-                <!-- OneToOne  end -->
-            </fieldset>
-        </form>
-    </div>
+<div ng-hide="Local_Plantao.editing || Local_Plantao.inserting" class="component-holder ng-binding ng-scope" data-component="crn-cron-grid" id="cron-crn-grid-search">
+  <cron-grid
+      options="{&quot;dataSourceScreen&quot;:{&quot;name&quot;:&quot;Local_Plantao&quot;,&quot;entity&quot;:&quot;app.Local_Plantao&quot;,&quot;entityDataSource&quot;:{&quot;id&quot;:&quot;app.Local_Plantao&quot;,&quot;customId&quot;:&quot;Local_Plantao&quot;,&quot;name&quot;:&quot;Local_Plantao&quot;,&quot;customQueryName&quot;:&quot;app.Local_Plantao&quot;,&quot;paramValues&quot;:[],&quot;entityFullName&quot;:&quot;app.entity.Local_Plantao&quot;,&quot;schemaFields&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_local_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais_nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;type&quot;:&quot;entity&quot;},&quot;schema&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_local_lpl&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;hospitais_nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;id&quot;:&quot;app.Local_Plantao&quot;},&quot;allowPaging&quot;:true,&quot;allowSorting&quot;:true,&quot;allowGrouping&quot;:false,&quot;allowSelectionTotalPageToShow&quot;:true,&quot;allowRefreshGrid&quot;:true,&quot;allowSelectionRow&quot;:true,&quot;hideModalButtons&quot;:true,&quot;editable&quot;:&quot;datasource&quot;,&quot;columns&quot;:[{&quot;dataType&quot;:&quot;Database&quot;,&quot;field&quot;:&quot;nm_local_lpl&quot;,&quot;headerText&quot;:&quot;Nm _local _lpl&quot;,&quot;type&quot;:&quot;string&quot;,&quot;sortable&quot;:true,&quot;filterable&quot;:true,&quot;format&quot;:&quot;&quot;,&quot;visible&quot;:true,&quot;visibleCrud&quot;:true,&quot;linkParentType&quot;:&quot;screen&quot;,&quot;linkParentLoadIfEmpty&quot;:false,&quot;required&quot;:false,&quot;inputType&quot;:&quot;default&quot;,&quot;aggregates&quot;:[]},{&quot;dataType&quot;:&quot;Command&quot;,&quot;sortable&quot;:false,&quot;filterable&quot;:false,&quot;visible&quot;:true,&quot;visibleCrud&quot;:true,&quot;linkParentType&quot;:&quot;screen&quot;,&quot;linkParentLoadIfEmpty&quot;:false,&quot;command&quot;:&quot;edit|destroy&quot;,&quot;required&quot;:false,&quot;inputType&quot;:&quot;default&quot;,&quot;aggregates&quot;:[]}],&quot;toolBarButtons&quot;:[{&quot;type&quot;:&quot;Native&quot;,&quot;title&quot;:&quot;create&quot;}],&quot;details&quot;:[],&quot;groupings&quot;:[]}"
+      ng-model="vars.grid30553"
+      class=""
+      style="">
+  </cron-grid>
 </div>
 
+<div data-component="crn-form" id="crn-form-form-Local_Plantao-30553">
+  <div class="form" ng-show="Local_Plantao.editing || Local_Plantao.inserting">
+    <form crn-datasource="Local_Plantao" class="">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-click="datasource.startInserting()"><span class="k-icon k-i-plus"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-click="datasource.startEditing()"><span class="k-icon k-i-edit"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><span class="k-icon k-i-arrow-chevron-left"></span></button>
+        <button class="btn btn-primary btn-fab k-button" data-component="crn-button" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><span class="k-icon k-i-arrow-chevron-right"></span></button>
+        <button class="btn btn-danger btn-fab k-button" data-component="crn-button" ng-click="datasource.remove()"><span class="k-icon k-i-close"></span></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success btn-fab k-button" id="btn_crud_post41107" data-component="crn-button" ng-click="datasource.post()"><span class="k-icon k-i-check"></span></button>
+        <button class="btn btn-danger btn-fab k-button" id="btn_crud_cancel41107" data-component="crn-button" ng-click="datasource.cancel()"><span class="k-icon k-i-cancel"></span></button>
+      </div>
+      <br/>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
 
-<!-- OneToOne modal -->
-<!-- OneToOne modal end-->
+
+                <div data-component="crn-textinput" id="crn-textinput-nm_local_lpl-30553" class="">
+                  <div class="form-group">
+                        <label for="textinput-nm_local_lpl" class="">Nm _local _lpl</label>
+ <!-- else for if !model.hasCronappFramework() -->
+                                <input
+                                            type="text"
+                                            ng-model="Local_Plantao.active.nm_local_lpl"
+                                            class="form-control k-textbox"
+                                            id="textinput-nm_local_lpl"
+                                            placeholder="Nm _local _lpl"
+                                            mask=""
+                                            mask-placeholder=""
+                                            ng-required="false">
+                         <!-- end if !model.hasCronappFramework() -->
+                  </div>
+                </div>
+                    <datasource data-component="crn-datasource" name="HospitaisCombo" entity="app.Hospitais" keys="id" schema="[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_hsp&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}]" lazy=true></datasource>
+
+
+                <div data-component="crn-enterprise-dynamic-combobox" id="crn-enterprise-dynamic-combobox-hospitais-30553" class="">
+                  <div class="form-group">
+                        <label for="enterprise-dynamic-combobox-hospitais" class="">Hospitais</label>
+ <!-- else for if !model.hasCronappFramework() -->
+								<cron-dynamic-select
+									
+                  id="enterprise-dynamic-combobox-hospitais"
+                  name="enterprise-dynamic-combobox-hospitais"
+                  options="{&quot;dataSourceScreen&quot;:{&quot;name&quot;:&quot;HospitaisCombo&quot;,&quot;entity&quot;:&quot;app.Hospitais&quot;,&quot;entityDataSource&quot;:{&quot;id&quot;:&quot;app.Hospitais&quot;,&quot;customId&quot;:&quot;Hospitais&quot;,&quot;name&quot;:&quot;HospitaisCombo&quot;,&quot;customQueryName&quot;:&quot;app.Hospitais&quot;,&quot;paramValues&quot;:[],&quot;entityFullName&quot;:&quot;app.entity.Hospitais&quot;,&quot;schemaFields&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_hsp&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;type&quot;:&quot;entity&quot;},&quot;schema&quot;:[{&quot;name&quot;:&quot;id&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:false,&quot;key&quot;:true},{&quot;name&quot;:&quot;cd_codigo_hsp&quot;,&quot;type&quot;:&quot;Int32&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false},{&quot;name&quot;:&quot;nm_hospital_hsp&quot;,&quot;type&quot;:&quot;String&quot;,&quot;nullable&quot;:true,&quot;key&quot;:false}],&quot;id&quot;:&quot;app.Hospitais&quot;},&quot;filter&quot;:&quot;contains&quot;,&quot;dataTextField&quot;:&quot;nm_hospital_hsp&quot;,&quot;dataValueField&quot;:&quot;id&quot;,&quot;dynamic&quot;:true,&quot;valuePrimitive&quot;:true,&quot;relationDataSource&quot;:{&quot;schema&quot;:[]},&quot;staticDataSource&quot;:[],&quot;filterKeyValues&quot;:{&quot;&quot;:&quot;&quot;,&quot;contains&quot;:&quot;Contendo&quot;,&quot;startswith&quot;:&quot;Iniciando com&quot;,&quot;endswith&quot;:&quot;Final com&quot;},&quot;changeCursor&quot;:true}"
+                  ng-model="Local_Plantao.active.hospitais"
+                  class="crn-select form-control">
+                </cron-dynamic-select>
+                         <!-- end if !model.hasCronappFramework() -->
+                  </div>
+                </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+      <fieldset>
+        <!-- OneToN -->
+        <!-- OneToOne  end -->
+      </fieldset>
+    </form>
+    &ensp;
+  </div>
+</div>
+
+

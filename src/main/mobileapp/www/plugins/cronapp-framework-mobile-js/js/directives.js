@@ -932,7 +932,7 @@ window.addEventListener('message', function(event) {
             }
 
             var addCustomButton = function(column) {
-                return '<ion-option-button class="button-dark" ng-click="listButtonClick($index, rowData, \''+window.stringToJs(column.execute)+'\', $event)"><i class="icon ion-navigate"></i></ion-option-button>';
+                return `<ion-option-button class="button-dark" ng-click="listButtonClick($index, rowData, '${window.stringToJs(column.execute)}', $event)"><i class=" ${column.iconClass}"></i> ${column.label}</ion-option-button> `
             }
 
             var isImage = function(fieldName, schemaFields) {
@@ -1042,20 +1042,27 @@ window.addEventListener('message', function(event) {
                     var ionItem = $(element).find('ion-item');
                     ionItem.attr('ng-repeat', getExpression(dataSourceName));
 
-                    if (isNativeEdit && !attrs.ngClick) {
+                    if (isNativeEdit) {
                         ionItem.attr('ng-click', getEditCommand(dataSourceName));
                     }
-                    else if(attrs.ngClick){
-                        ionItem.attr('ng-click', "listButtonClick($index, rowData, \'"+window.stringToJs(attrs.ngClick)+"\', $event)");
+
+                    if(attrs.ngClick){
+                      ionItem.attr('ng-click', "listButtonClick($index, rowData, \'"+window.stringToJs(attrs.ngClick)+"\', $event)");
                     }
 
-                    $(element).removeAttr('ng-click');
+                    const attrsExcludeds = ['options','ng-repeat','ng-click'];
+                    const filteredItems = Object.values(attrs.$attr).filter(function(item) {
+                      return !attrsExcludeds.includes(item);
+                    })
+                    for( let o in filteredItems){
+                      ionItem.attr(filteredItems[o], attrs[o]);
+                    }
 
                     content = '<div class="item-list-detail">' + content + '<\div>';
-                    var ionAvatar = $(element).find('.item-avatar');
-                    ionAvatar.append(image);
-                    ionAvatar.append(content);
-                    ionAvatar.append(buttons);
+                      var ionAvatar = $(element).find('.item-avatar');
+                      ionAvatar.append(image);
+                      ionAvatar.append(content);
+                      ionAvatar.append(buttons);
 
                     scope.nextPageInfinite = function() {
                         dataSource.nextPage();

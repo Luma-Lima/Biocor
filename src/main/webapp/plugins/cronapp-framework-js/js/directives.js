@@ -36,6 +36,12 @@
       },
       enabled: {
         public: true
+      },
+      notvisible: {
+        public: false
+      },
+      notenabled: {
+        public: false
       }
     }
 
@@ -388,6 +394,18 @@
             }
             if (perms.enabled[role]) {
               enabled = true;
+            }
+          }
+        }
+
+        for (var i=0;i<roles.length;i++) {
+          var role = roles[i].trim();
+          if (role) {
+            if (perms.notvisible[role]) {
+              show = false;
+            }
+            if (perms.notenabled[role]) {
+              enabled = false;
             }
           }
         }
@@ -2481,11 +2499,13 @@
         var parent = element.parent();
         var id = attrs.id ? ' id="' + attrs.id + '"' : '';
         var name = attrs.name ? ' name="' + attrs.name + '"' : '';
-        var required = '';
-        if (attrs.ngRequired || attrs.required) {
-          required = ' required ';
-        }
-        $(parent).append('<input style="width: 100%;"' + id + name + required + ' class="cronDynamicSelect" ng-model="' + attrs.ngModel + '"/>');
+        var inputSelect = $('<input style="width: 100%;"' + id + name + ' class="cronDynamicSelect" ng-model="' + attrs.ngModel + '"/>');
+
+        //https://stackoverflow.com/questions/21948067/issues-with-ng-required-directive-angular-js
+        attrs.$observe('required', function(value) {
+          inputSelect.prop('required', value);
+        });
+        $(parent).append(inputSelect);
         var $element = $(parent).find('input.cronDynamicSelect');
         var combobox = $element.kendoDropDownList(options).data('kendoDropDownList');
         options.combobox = combobox;
@@ -3530,9 +3550,8 @@ function maskDirective($compile, $translate, $parse, attrName) {
           });
         }
 
-      } else if (type == 'number' || type == 'money' || type == 'integer') {
+      } else if (type == 'number' || type == 'money' || type == 'integer' || type == 'money-decimal') {
         removeMask = true;
-        textMask = false;
 
         var currency = mask.trim().replace(/\./g, '').replace(/\,/g, '').replace(/#/g, '').replace(/0/g, '').replace(/9/g, '');
 
@@ -3545,7 +3564,6 @@ function maskDirective($compile, $translate, $parse, attrName) {
         if (mask.startsWith(currency)) {
           prefix = currency;
         }
-
         else if (mask.endsWith(currency)) {
           suffix = currency;
         }
@@ -3575,20 +3593,24 @@ function maskDirective($compile, $translate, $parse, attrName) {
           precision = strD.length;
         }
 
-
         var inputmaskType = 'numeric';
 
         if (precision == 0)
           inputmaskType = 'integer';
 
+        if(type == 'money-decimal'){
+          inputmaskType = 'currency';
+        }
+
         var ipOptions = {
-          'rightAlign':  (type == 'money'),
+          'rightAlign':  (type == 'money' || type == 'money-decimal'),
           'unmaskAsNumber': true,
           'allowMinus': true,
           'prefix': prefix,
           'suffix': suffix,
           'radixPoint': decimal,
-          'digits': precision
+          'digits': precision,
+          'numericInput' :  (type == 'money-decimal')
         };
 
         if (thousands) {
@@ -3699,7 +3721,7 @@ function parseMaskType(type, $translate) {
       type = '#.#00,00'
   }
 
-  else if (type == "money") {
+  else if (type == "money" || type == "money-decimal") {
     type = $translate.instant('Format.Money');
     if (type == 'Format.Money')
       type = '#.#00,00'
@@ -4244,8 +4266,8 @@ app.kendoHelper = {
     if (options) {
       if (!options.dynamic || options.dynamic=='false') {
         valuePrimitive = true;
-        options.dataValueField = 'value';
-        options.dataTextField = 'key';
+		options.dataValueField = options.dataValueField || 'value';
+        options.dataTextField = options.dataTextField || 'key';
         dataSource.data = (options.staticDataSource == null ? undefined : options.staticDataSource);
         for (i = 0; i < dataSource.data.length; i++) {
           try {

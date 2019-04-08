@@ -1039,11 +1039,16 @@
         }
       }
 
-    var oldHash = window.location.hash;
-    window.location.hash = view + (queryString?"?"+queryString:"");
-    if(oldHash.indexOf(view) >= 0){
+      var oldHash = window.location.hash;
+      window.location.hash = view + (queryString?"?"+queryString:"");
+
+      var oldHashToCheck = oldHash + (oldHash.indexOf("?") > -1 ? "": "?");
+      var viewToCheck = view + (view.indexOf("?") > -1 ? "": "?");
+
+      if(oldHashToCheck.indexOf(viewToCheck) >= 0){
         window.location.reload();
       }
+
     }
     catch (e) {
       alert(e);
@@ -1346,7 +1351,11 @@
    * @multilayer true
    */
   this.cronapi.screen.disableComponent = function(/** @type {ObjectType.OBJECT} @blockType ids_from_screen*/ id) {
+    if($('#'+id).data("kendoComboBox")){
+      $('#'+id).data("kendoComboBox").enable(false);
+    }else{
     $.each( $('#'+id).find('*').addBack(), function(index, value){ $(value).prop('disabled',true); });
+    }
   };
 
   /**
@@ -3746,5 +3755,93 @@
     if(Array.isArray(options)){   dataset.options = options;} else  dataset.options = JSON.parse(options);
     return dataset;
   }
+
+
+
+  /**
+   * @category CategoryType.SOCIAL
+   * @categoryTags login|social|network|facebook|github|google|linkedin
+   */
+  this.cronapi.social = {};
+
+
+  this.cronapi.social.gup = function(name,url){
+      if (!url) url = location.href;
+      name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+      var regexS = "[\\?&]"+name+"=([^&#]*)";
+      var regex = new RegExp( regexS );
+      var results = regex.exec( url );
+      return results == null ? null : results[1];
+  }
+
+  this.cronapi.social.login = function(login,password,options){
+      var item;
+      this.cronapi.screen.showLoading();
+      if (!this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getHostapp())) {
+          this.cronapi.util.getURLFromOthers('POST', 'application/x-www-form-urlencoded', String(this.cronapi.screen.getHostapp()) + String('auth'), this.cronapi.object.createObjectFromString(['{ \"username\": \"',login,'\" , \"password\": \"',password,'\" } '].join('')), this.cronapi.object.createObjectFromString(['{ \"X-AUTH-TOKEN\": \"',options,'\" } '].join('')), function(sender_item) {
+              item = sender_item;
+              this.cronapi.screen.hide();
+              this.cronapi.util.setLocalStorage('_u', this.cronapi.object.serializeObject(item));
+              this.cronapi.screen.changeView("#/app/logged/home",[  ]);
+          }.bind(this), function(sender_item) {
+              item = sender_item;
+              if (this.cronapi.object.getProperty(item, 'status') == '403' || this.cronapi.object.getProperty(item, 'status') == '401') {
+                  this.cronapi.screen.notify('error',this.cronapi.i18n.translate("LoginViewInvalidpassword",[  ]));
+              } else {
+                  this.cronapi.screen.notify('error',this.cronapi.object.getProperty(item, 'responseJSON.message'));
+              }
+              this.cronapi.screen.hide();
+          }.bind(this));
+      } else {
+          this.cronapi.screen.hide();
+          this.cronapi.screen.notify('error','HostApp is Required');
+      }
+  }
+
+  /**
+   * @type function
+   * @name Login With Facebook
+   * @nameTags login|social|network|facebook|github|google|linkedin
+   * @description {{createSerieDescription}}
+   * @param {ObjectType.STRING} socialNetwork {{socialNetwork}}
+   * @returns {ObjectType.VOID}
+   */
+  this.cronapi.social.sociaLogin = function(/** @type {ObjectType.STRING} @description socialNetwork @blockType util_dropdown @keys facebook|github|google|linkedin @values facebook|github|google|linkedin  */ socialNetwork) {
+      var that = this;
+      var u = window.hostApp+"signin/"+socialNetwork+"/";
+      if(cordova.InAppBrowser){
+          var cref = cordova.InAppBrowser.open(u, '_blank', 'location=no');
+          cref.addEventListener('loadstart', function(event) {
+              if (event.url.indexOf("_ctk") > -1) {
+                  cref.close();
+                  that.cronapi.social.login.bind(that)('#OAUTH#', '#OAUTH#', that.cronapi.social.gup('_ctk',event.url));
+              }
+          });
+      }else{
+          //TODO LOGIN ON WEB
+      }
+  }
+
+  /**
+   * @type function
+   * @name {{getSelectedRowsGrid}}
+   * @nameTags getSelectedRowsGrid|Obter linhas selecionadas da grade
+   * @description {{functionToGetSelectedRowsGrid}}
+   * @param {ObjectType.STRING} field {{field}}
+   * @returns {ObjectType.OBJECT}
+   */
+  this.cronapi.screen.getSelectedRowsGrid = function(/** @type {ObjectType.STRING} @blockType field_from_screen*/ field) {
+    var result = [];
+    var grid = $('[ng-model="'+ field  +'"]').children().data('kendoGrid');
+    if (grid) {
+      var selected = grid.select();
+      selected.each(function() {
+        var dataItem = grid.dataItem(this);
+        result.push(dataItem);
+      });
+    }
+    return result;
+  };
+
 
 }).bind(window)();

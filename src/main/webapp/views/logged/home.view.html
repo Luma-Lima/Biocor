@@ -74,13 +74,15 @@
                 </tr> 
                 <tr> 
                   <td><strong>Horário escala</strong></td> 
-                  <td>{{vm.currentEvent.horario_Escala}}</td> 
+                  <td>{{vm.currentEvent.horario}}</td> 
                 </tr> 
               </tbody> 
             </table> 
           </div> 
           <div class="modal-footer"> 
-            <button class="btn btn-primary" data-dismiss="modal">OK</button> 
+            <button class="btn btn-primary" data-dismiss="modal" ng-click="cronapi.client('js.blockly.ChamarViewMedico.ExecutarChamarViewMedico').run()">Alterar Médico</button><button class="btn btn-primary" data-dismiss="modal">OK</button> 
+          </div><div class="modal-footer"> 
+             
           </div> 
         </div> 
       </div> 

@@ -1,1 +1,1 @@
-window.hostApp = 'https://biocorteste.cronapp.io/';
+window.hostApp = 'https://10-103-39131.debug.ide.cronapp.io/';

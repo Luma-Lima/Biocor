@@ -169,7 +169,7 @@ public static Var obterChaveServidor() throws Exception {
    private Var solicitacaoMudanca = Var.VAR_NULL;
 
    public Var call() throws Exception {
-    return Var.valueOf("AAAAYXpS-3s:APA91bHKz9BApNs3EHNG-moJ7czTOFL5b55D-miNbShiLClZ3r925zz2kf6lGktkqdrNMuxng3UxYsNFqrAmS-6C7Uu9KfHnq8g1MivlT3pmYOKEaut07U4TJSjgL16ZoYzvqMeGxc6P");
+    return Var.valueOf("AAAAN0lcF-M:APA91bHxfOzk-mlXM0lUzkNnO1X1eJ1G9-P8EmgHdxi8dIQpUA-QxHT6uQqdRbI7Yogu2hJIzPqnIulAoyrO3ORrl3apkIQv-QxMvBEDL2jXpfdThuQFYr8eH-IZdWvd3J-xW6H7Fvho");
    }
  }.call();
 }
