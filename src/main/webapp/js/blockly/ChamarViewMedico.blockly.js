@@ -8,5 +8,5 @@ window.blockly.js.blockly.ChamarViewMedico = window.blockly.js.blockly.ChamarVie
  */
 window.blockly.js.blockly.ChamarViewMedico.ExecutarChamarViewMedico = function() {
  var item;
-  this.cronapi.screen.changeView("#/home/admin/user",[  ]);
+  this.cronapi.screen.showModal("modal12097");
 }

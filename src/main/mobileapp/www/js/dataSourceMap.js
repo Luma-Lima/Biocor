@@ -15,6 +15,7 @@ window.dataSourceMap["app.LoginMobile"] = { customId: "LoginMobile", serviceUrl:
 window.dataSourceMap["app.query376376"] = { customId: "consultaMedico", serviceUrl: "api/cronapi/odata/v2/consultaMedico/", serviceUrlODATA: "/api/cronapi/odata/v2/app/consultaMedico" };
 window.dataSourceMap["app.Local_Plantao"] = { customId: "app.entity.Local_Plantao", serviceUrl: "api/cronapi/crud/app.entity.Local_Plantao", serviceUrlODATA: "/api/cronapi/odata/v2/app/Local_Plantao" };
 window.dataSourceMap["app.consultaMedico"] = { customId: "consultaMedico", serviceUrl: "api/cronapi/odata/v2/consultaMedico/", serviceUrlODATA: "/api/cronapi/odata/v2/app/consultaMedico" };
+window.dataSourceMap["app.query155620"] = { customId: "query155620", serviceUrl: "api/cronapi/odata/v2/query155620/", serviceUrlODATA: "/api/cronapi/odata/v2/app/query155620" };
 window.dataSourceMap["app.Role"] = { customId: "app.entity.Role", serviceUrl: "api/cronapi/crud/app.entity.Role", serviceUrlODATA: "/api/cronapi/odata/v2/app/Role" };
 window.dataSourceMap["app.Medico"] = { customId: "app.entity.Medico", serviceUrl: "api/cronapi/crud/app.entity.Medico", serviceUrlODATA: "/api/cronapi/odata/v2/app/Medico" };
 window.dataSourceMap["app.Convenio"] = { customId: "app.entity.Convenio", serviceUrl: "api/cronapi/crud/app.entity.Convenio", serviceUrlODATA: "/api/cronapi/odata/v2/app/Convenio" };
