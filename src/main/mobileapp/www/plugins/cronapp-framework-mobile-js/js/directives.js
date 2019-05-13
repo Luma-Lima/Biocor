@@ -129,7 +129,6 @@ window.addEventListener('message', function(event) {
                 scope: true,
                 require: 'ngModel',
                 link: function(scope, element, attr) {
-                    debugger;
                     var required = (attr.ngRequired && attr.ngRequired == "true"?"required":"");
                     var content = element.html();
                     var templateDyn    =
@@ -322,7 +321,6 @@ window.addEventListener('message', function(event) {
                     var render = function(canvas, value, typeNumber, correction, size, inputMode){
                         var trim = /^\s+|\s+$/g;
                         var text = value.replace(trim, '');
-                        debugger;
                         var qr = new QRCode(typeNumber, correction, inputMode);
                         qr.addData(text);
                         qr.make();
@@ -1259,7 +1257,7 @@ function maskDirective($compile, $translate, attrName) {
                     });
                 }
 
-            } else if (type == 'number' || type == 'money' || type == 'integer') {
+            } else if (type == 'number' || type == 'money' || type == 'integer' || type == 'money-decimal') {
                 removeMask = true;
                 textMask = false;
 
@@ -1272,11 +1270,10 @@ function maskDirective($compile, $translate, attrName) {
                 var precision = 0;
 
                 if (mask.startsWith(currency)) {
-                    prefix = currency;
+                  prefix = currency;
                 }
-
                 else if (mask.endsWith(currency)) {
-                    suffix = currency;
+                  suffix = currency;
                 }
 
                 var pureMask = mask.trim().replace(prefix, '').replace(suffix, '').trim();
@@ -1310,14 +1307,19 @@ function maskDirective($compile, $translate, attrName) {
                 if (precision == 0)
                     inputmaskType = 'integer';
 
+                if(type == 'money-decimal'){
+                  inputmaskType = 'currency';
+                }
+
                 var ipOptions = {
-                    'rightAlign':  (type == 'money'),
-                    'unmaskAsNumber': true,
-                    'allowMinus': true,
-                    'prefix': prefix,
-                    'suffix': suffix,
-                    'radixPoint': decimal,
-                    'digits': precision
+                  'rightAlign':  (type == 'money' || type == 'money-decimal'),
+                  'unmaskAsNumber': true,
+                  'allowMinus': true,
+                  'prefix': prefix,
+                  'suffix': suffix,
+                  'radixPoint': decimal,
+                  'digits': precision,
+                  'numericInput' :  (type == 'money-decimal')
                 };
 
                 if (thousands) {
@@ -1336,15 +1338,15 @@ function maskDirective($compile, $translate, attrName) {
                 });
                 if (ngModelCtrl) {
                     ngModelCtrl.$formatters.push(function (value) {
-                        if (value != undefined && value != null && value != '') {
+                        if (value != undefined && value != null && value !== '') {
                             return format(mask, value);
                         }
                         return null;
                     });
                     ngModelCtrl.$parsers.push(function (value) {
-                        if (value != undefined && value != null && value != '') {
+                        if (value != undefined && value != null && value !== '') {
                             var unmaskedvalue = $element.inputmask('unmaskedvalue');
-                            if (unmaskedvalue != '')
+                            if (unmaskedvalue !== '')
                                 return unmaskedvalue;
                         }
                         return null;
@@ -1418,7 +1420,7 @@ function parseMaskType(type, $translate) {
             type = '0,00'
     }
 
-    else if (type == "money") {
+    else if (type == "money" || type == "money-decimal") {
         type = $translate.instant('Format.Money');
         if (type == 'Format.Money')
             type = '#.#00,00'

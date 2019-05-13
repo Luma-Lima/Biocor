@@ -25,6 +25,7 @@ public static Var Executar(Var medico_destino, Var dt_agenda, Var horario_escala
 
    public Var call() throws Exception {
     cronapi.database.Operations.execute(Var.valueOf("app.entity.Agenda"), Var.valueOf("update Agenda set medico = :medico_destino where dt_agenda_age >= :dt_agenda AND horario_Escala = :horario_Escala AND medico = :medico_origem"),Var.valueOf("medico_destino",medico_destino),Var.valueOf("dt_agenda",dt_agenda),Var.valueOf("horario_Escala",horario_escala),Var.valueOf("medico_origem",medico_origem));
+    cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"), Var.valueOf("OK"));
     return Var.VAR_NULL;
    }
  }.call();

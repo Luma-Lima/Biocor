@@ -27,8 +27,9 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                 var day = 60 * 60 * 24 * 1000;
                 calendarData.push({
                   title: responseData[i].title,
-                  medico: responseData[i].medico ,
+                  medico: responseData[i].medico,
                   responsavel: responseData[i].responsavel,
+                  horario: responseData[i].horarioEscala,
                   local: responseData[i].local,
                   color: responseData[i].color,
                   startsAt: new Date(responseData[i].startsAt + day),
@@ -36,6 +37,7 @@ app.factory('PlantaoAPIService', function($http, calendarConfig, Configurations)
                   draggable: responseData[i].draggable,
                   resizable: responseData[i].resizable,
                   actions: responseData[i].actions,
+                  agendaId: responseData[i].agendaId,
               }) 
               }
               console.log(calendarData);
